@@ -9,6 +9,9 @@
    .titre1{
      @apply font-corps_1
    }
+   h1{
+     @apply text-5xl font-corps_1 font-bold py-4 !important
+   }
   }
 
 body,html{
