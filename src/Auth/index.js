@@ -9,7 +9,7 @@ import {
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
 import * as animationData from "/public/animations/login.json";
 import Lottie from "react-lottie";
-import Logo from "../Components/Logo";
+import Logo from "../components/Logo";
 import { motion, MotionConfig } from "framer-motion";
 const Auth = () => {
   return (

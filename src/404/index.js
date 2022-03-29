@@ -1,5 +1,5 @@
 import React from "react";
-import EnDeveloppement from "../Components/EnDeveloppement";
+import EnDeveloppement from "../components/EnDeveloppement";
 
 const Page404 = () => {
   return <EnDeveloppement />;

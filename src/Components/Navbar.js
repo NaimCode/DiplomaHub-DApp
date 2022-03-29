@@ -1,4 +1,4 @@
-import Logo from "../Components/Logo";
+import Logo from "./Logo";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
