@@ -5,3 +5,8 @@
 @layer components {
    
   }
+
+body,html{
+    margin: 0cm;
+    padding: 0cm;
+}
