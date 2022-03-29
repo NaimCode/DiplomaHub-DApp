@@ -27,4 +27,8 @@ module.exports = {
     },
   },
   plugins: [],
+  variants: {
+    // ...
+    scale: ["responsive", "hover", "focus", "active", "group-hover"],
+  },
 };

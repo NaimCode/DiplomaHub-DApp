@@ -11,8 +11,8 @@ const EnDeveloppement = () => {
   };
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
-      <div className="max-w-xl pr-4 px-3">
-        <Lottie options={defaultOptions} />
+      <div className="w-full md:w-[50%] pr-4 px-3">
+        <Lottie options={defaultOptions} width="100%" />
       </div>
       <h3 className="font-corps_1">En developpement...</h3>
     </div>

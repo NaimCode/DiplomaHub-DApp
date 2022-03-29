@@ -80,7 +80,7 @@ const Auth = () => {
           <div className="grow"></div>
         </div>
       </div>
-      <div className="h-full w-0 md:w-1/2 bg-primaire-normal border-l-2 border-gray-500">
+      <div className="h-full w-0 md:w-1/2 bg-primaire-normal border-l-2 shadow-md">
         <Lottie options={defaultOptions} />
       </div>
     </div>
