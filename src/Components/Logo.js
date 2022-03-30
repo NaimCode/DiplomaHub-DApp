@@ -7,7 +7,7 @@ const Logo = () => {
       <img
         src={LogoIcon}
         alt=""
-        className="h-[40px] duration-300 transition-all group-hover:h-[42px]"
+        className="text-white h-[40px] duration-300 transition-all group-hover:h-[42px]"
       />
     </Link>
   );

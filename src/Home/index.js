@@ -61,7 +61,7 @@ const Home = () => {
                 color="primary"
                 startIcon={<SchoolTwoTone />}
               >
-                <Link to={"/creerEcole"}>Inscrire une école</Link>
+                <Link to={"/inscrireEcole"}>Inscrire une école</Link>
               </Button>
               <Button
                 variant="outlined"

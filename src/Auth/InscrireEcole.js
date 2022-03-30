@@ -1,8 +1,7 @@
-import React from "react";
 import EnDeveloppement from "../components/EnDeveloppement";
 
-const CreerEcole = () => {
+const InscrireEcole = () => {
   return <EnDeveloppement />;
 };
 
-export default CreerEcole;
+export default InscrireEcole;

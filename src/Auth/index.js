@@ -1,89 +1,30 @@
-import {
-  TextField,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Button,
-  Card,
-} from "@mui/material";
-import { EmailOutlined, LockOutlined } from "@mui/icons-material";
 import * as animationData from "/public/animations/login.json";
 import Lottie from "react-lottie";
 import Logo from "../components/Logo";
-import { motion, MotionConfig } from "framer-motion";
+import { Route, Routes } from "react-router-dom";
+import Connexion from "./Connexion";
+import InscrireEcole from "./InscrireEcole";
+
 const Auth = () => {
   return (
     <div className="h-screen w-screen flex">
-      <MotionConfig>
-        <motion.div
-          initial={{
-            y: "-100%",
-          }}
-          animate={{
-            y: "0%",
-          }}
-          className="grow flex flex-col items-center"
-        >
-          <div className="h-full flex flex-col p-4 max-w-md">
-            <div className="flex items-center h-16 ">
-              <Logo />
-            </div>
-
-            <div className="grow flex flex-col justify-center">
-              <div className="px-4 py-10">
-                <p className="text-accent">Content de vous revoir</p>
-                <h1 className="titre1">Se connecter à votre espace</h1>
-                <hr className="my-5" />
-
-                <div className="py-5">
-                  <TextField
-                    fullWidth
-                    label="Email"
-                    InputProps={{
-                      endAdornment: <EmailOutlined />,
-                    }}
-                  />
-                  <TextField
-                    type={"password"}
-                    className="my-4"
-                    fullWidth
-                    label="Mot de passe"
-                    InputProps={{
-                      endAdornment: <LockOutlined />,
-                    }}
-                  />
-                  <RadioGroup
-                    className="flex flex-row gap-3 justify-between"
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="etudiant"
-                  >
-                    <FormControlLabel
-                      value="etudiant"
-                      control={<Radio />}
-                      label="Etudiant"
-                    />
-                    <FormControlLabel
-                      value="member"
-                      control={<Radio />}
-                      label="Membre"
-                    />
-                  </RadioGroup>
-                </div>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className="font-corps_1 mt-2 py-3"
-                >
-                  Connexion
-                </Button>
-              </div>
-            </div>
-
-            <div className="grow"></div>
+      <div className="grow flex flex-col items-center">
+        <div className="h-full flex flex-col p-4 max-w-md">
+          <div className="flex items-center h-16 ">
+            <Logo />
           </div>
-        </motion.div>
-      </MotionConfig>
+
+          <Routes>
+            <Route path="/connexion">
+              <Connexion />
+            </Route>
+            <Route path="/inscrireEcole" element={<InscrireEcole />} />
+          </Routes>
+
+          <div className="grow"></div>
+        </div>
+      </div>
+
       <Rightside />
     </div>
   );
