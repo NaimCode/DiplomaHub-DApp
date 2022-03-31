@@ -1,4 +1,4 @@
-import EnDeveloppement from "../Components/EnDeveloppement";
+import EnDeveloppement from "../components/EnDeveloppement";
 const Home = () => {
   return <EnDeveloppement />;
 };
