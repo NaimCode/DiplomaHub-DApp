@@ -14,7 +14,7 @@ const EnDeveloppement = () => {
       <div className="max-w-xl pr-4 px-3">
         <Lottie options={defaultOptions} />
       </div>
-      <h3 className="font-corps_1">En developpement...</h3>
+      <h3 className="font-corps_1">Coucou</h3>
     </div>
   );
 };
