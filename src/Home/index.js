@@ -3,7 +3,7 @@ import * as React from "react";
 import * as animationData from "/public/animations/landing.json";
 import * as certificate from "/public/animations/certificate.json";
 import Lottie from "react-lottie";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import Button from "@mui/material/Button";
 import { motion, MotionConfig } from "framer-motion";
 import { Link } from "react-router-dom";
