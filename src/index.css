@@ -9,9 +9,21 @@
    .titre1{
      @apply font-corps_1
    }
+   body,html{
+     @apply bg-background p-0 m-0 !important
+   }
+   p{
+     @apply text-opacity-70 !important
+   }
    h1{
      @apply text-5xl font-corps_1 font-bold py-4 !important
    }
+   h2{
+    @apply text-3xl font-corps_1 font-bold py-2 !important
+  }
+  h3{
+    @apply text-xl font-corps_1 font-semibold py-2 !important
+  }
   }
 
 body,html{

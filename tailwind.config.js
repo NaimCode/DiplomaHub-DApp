@@ -8,6 +8,7 @@ module.exports = {
         corps_2: ["Spartant", "sans-serif"],
       },
       colors: {
+        background: "#f5f8fa",
         darker: "#1D2671",
         primaire: {
           vive: "#42a5f5",
