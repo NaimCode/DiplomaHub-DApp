@@ -51,9 +51,9 @@ const Auth = () => {
                     label="Etudiant"
                   />
                   <FormControlLabel
-                    value="member"
+                    value="etablissement"
                     control={<Radio />}
-                    label="Membre"
+                    label="Etablissement"
                   />
                 </RadioGroup>
               </div>

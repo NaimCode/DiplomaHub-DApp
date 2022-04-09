@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Page404 from "../404";
-import Auth from "../Auth";
+import Page404 from "./pages/404";
+import Auth from "./pages/auth";
+import Home from "./pages/home";
 
-import Home from "../Home";
 function App() {
   return (
     <BrowserRouter>

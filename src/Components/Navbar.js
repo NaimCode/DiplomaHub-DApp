@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import { Brand } from "./Logo";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -24,7 +24,7 @@ const Navbar = ({ delay }) => {
       <AppBar position="fixed" color="transparent" elevation={0}>
         <motion.div initial={{ x: "-100%" }} animate={{ x: "0%" }}>
           <Toolbar className="flex justify-between">
-            <Logo />
+            <Brand />
 
             <div className="flex flex-row gap-7">
               {data.map((d) => (
