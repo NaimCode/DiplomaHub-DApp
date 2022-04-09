@@ -1,7 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind components;
 @tailwind utilities;
-
+@tailwind base;
 @layer components {
-   
+   .text-accent {
+     @apply opacity-50
+   }
+   .titre1{
+     @apply font-corps_1
+   }
+   h1{
+     @apply text-5xl font-corps_1 font-bold py-4 !important
+   }
   }
+
+body,html{
+    margin: 0cm;
+    padding: 0cm;
+}

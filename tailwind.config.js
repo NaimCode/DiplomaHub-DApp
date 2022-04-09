@@ -8,6 +8,7 @@ module.exports = {
         corps_2: ["Spartant", "sans-serif"],
       },
       colors: {
+        darker: "#1D2671",
         primaire: {
           vive: "#42a5f5",
           normal: "#1976d2",
@@ -27,4 +28,8 @@ module.exports = {
     },
   },
   plugins: [],
+  variants: {
+    // ...
+    scale: ["responsive", "hover", "focus", "active", "group-hover"],
+  },
 };
