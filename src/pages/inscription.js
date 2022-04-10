@@ -78,6 +78,7 @@ const Inscription = () => {
                 label="Nom complet"
                 value={nom}
                 onChange={(v) => setnom(v.target.value)}
+                required
               />
             </div>
             <div className="flex flex-row gap-8">
@@ -87,6 +88,7 @@ const Inscription = () => {
                 label="Email"
                 value={email}
                 onChange={(v) => setemail(v.target.value)}
+                required
               />
               <TextField
                 type={"tel"}
@@ -94,6 +96,7 @@ const Inscription = () => {
                 label="Tel"
                 value={num}
                 onChange={(v) => setnum(v.target.value)}
+                required
               />
             </div>
             <TextField
