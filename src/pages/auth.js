@@ -1,15 +1,41 @@
 import * as animationData from "/public/animations/login.json";
 import Lottie from "react-lottie";
 import Logo from "../Components/Logo";
+import axios from "axios";
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
 import {
   TextField,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
+  InputLabel,
+  Collapse,
+  FormControl,
+  Select,
   Button,
+  MenuItem,
+  Alert,
 } from "@mui/material";
+import { useState } from "react";
+import { SERVER_URL } from "../Data/serveur";
 const Auth = () => {
+  const [isLaoding, setloading] = useState(false);
+  const [error, seterror] = useState();
+  const [email, setemail] = useState();
+  const [password, setpassword] = useState();
+  const [isMember, setisMember] = useState();
+  const Connexion = (event) => {
+    event.preventDefault();
+    setloading(true);
+    axios
+      .post(SERVER_URL + "/auth", {
+        email,
+        password,
+        isMember,
+      })
+      .then((v) => {
+        console.log(v.data);
+      })
+      .catch((v) => seterror(v.response.data.error))
+      .finally(() => setloading(false));
+  };
   return (
     <div className="h-screen w-screen flex">
       <div className="w-1/2 flex flex-col items-center">
@@ -17,7 +43,10 @@ const Auth = () => {
           <div className="flex items-center h-16 ">
             <Logo />
           </div>
-          <div className="grow flex flex-col justify-center">
+          <form
+            onSubmit={Connexion}
+            className="grow flex flex-col justify-center"
+          >
             <div className="px-4 py-10">
               <p className="text-accent">Content de vous revoir</p>
               <h1 className="titre1">Se connecter à votre espace</h1>
@@ -26,6 +55,8 @@ const Auth = () => {
               <div className="py-5">
                 <TextField
                   fullWidth
+                  value={email}
+                  onChange={(v) => setemail(v.target.value)}
                   label="Email"
                   InputProps={{
                     endAdornment: <EmailOutlined />,
@@ -35,38 +66,52 @@ const Auth = () => {
                   type={"password"}
                   className="my-4"
                   fullWidth
+                  value={password}
+                  onChange={(v) => setpassword(v.target.value)}
                   label="Mot de passe"
                   InputProps={{
                     endAdornment: <LockOutlined />,
                   }}
                 />
-                <RadioGroup
-                  className="flex flex-row gap-3 justify-between"
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="etudiant"
-                >
-                  <FormControlLabel
-                    value="etudiant"
-                    control={<Radio />}
-                    label="Etudiant"
-                  />
-                  <FormControlLabel
-                    value="etablissement"
-                    control={<Radio />}
-                    label="Etablissement"
-                  />
-                </RadioGroup>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Je suis
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={isMember}
+                    onChange={(v) => setisMember(v.target.value)}
+                    label="Je suis"
+                  >
+                    <MenuItem value={false}>Etudiant</MenuItem>
+                    <MenuItem value={true}>Etablissement ou Member</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
               <Button
+                disabled={isLaoding}
+                type="submit"
                 fullWidth
                 variant="contained"
                 color="primary"
                 className="font-corps_1 mt-2 py-3"
               >
-                Connexion
+                {isLaoding ? "Traitement" : "Connexion"}
               </Button>
+              <div className="py-3"></div>
+              <Collapse in={error !== undefined}>
+                <Alert
+                  severity="error"
+                  onClose={() => {
+                    seterror(undefined);
+                  }}
+                >
+                  {error}
+                </Alert>
+              </Collapse>
             </div>
-          </div>
+          </form>
 
           <div className="grow"></div>
         </div>

@@ -16,7 +16,7 @@
      @apply text-opacity-70 !important
    }
    h1{
-     @apply text-5xl font-corps_1 font-bold py-4 !important
+     @apply text-4xl font-corps_1 font-bold py-4 !important
    }
    h2{
     @apply text-3xl font-corps_1 font-bold py-2 !important
