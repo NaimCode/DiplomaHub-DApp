@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import { motion, MotionConfig } from "framer-motion";
 import { Link } from "react-router-dom";
 import { SearchTwoTone, SchoolTwoTone } from "@mui/icons-material";
+// import { useEffect } from "react";
+// import { useSelector } from "react-redux";
 const Home = () => {
   const defaultOptions = {
     loop: true,
@@ -25,6 +27,7 @@ const Home = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   return (
     <section>
       <Helmet>

@@ -3,6 +3,8 @@ import Lottie from "react-lottie";
 import Logo from "../Components/Logo";
 import axios from "axios";
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
+import { useSelector, useDispatch } from "react-redux";
+import { connexion, deconnexion } from "../redux/userSlice";
 import {
   TextField,
   InputLabel,
@@ -21,6 +23,8 @@ const Auth = () => {
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
   const [isMember, setisMember] = useState();
+  const user_id = useSelector((state) => state.user.id);
+  const dispatch = useDispatch();
   const Connexion = (event) => {
     event.preventDefault();
     setloading(true);
@@ -30,9 +34,7 @@ const Auth = () => {
         password,
         isMember,
       })
-      .then((v) => {
-        console.log(v.data);
-      })
+      .then((v) => dispatch(connexion(v.data._id)))
       .catch((v) => seterror(v.response.data.error))
       .finally(() => setloading(false));
   };
@@ -100,6 +102,16 @@ const Auth = () => {
                 {isLaoding ? "Traitement" : "Connexion"}
               </Button>
               <div className="py-3"></div>
+              <Collapse in={user_id}>
+                <Alert
+                  severity="error"
+                  onClose={() => {
+                    dispatch(deconnexion());
+                  }}
+                >
+                  {user_id}
+                </Alert>
+              </Collapse>
               <Collapse in={error !== undefined}>
                 <Alert
                   severity="error"
