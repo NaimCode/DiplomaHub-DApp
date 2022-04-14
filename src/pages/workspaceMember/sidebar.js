@@ -8,6 +8,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { Person } from "@mui/icons-material";
 import { Brand } from "../../Components/Logo";
 import {
   FaSchool as EtablissementIcon,
@@ -100,8 +101,13 @@ const menu = [
     head: "",
     menu: [
       {
+        titre: "Compte",
+        route: "compte",
+        icon: (style) => <Person className={style} />,
+      },
+      {
         titre: "Etablissement",
-        route: "/workspace/etablissement",
+        route: "etablissement",
         icon: (style) => <EtablissementIcon className={style} />,
       },
     ],

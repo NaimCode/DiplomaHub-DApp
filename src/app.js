@@ -6,6 +6,7 @@ import Inscription from "./pages/inscription";
 import Workspace from "./pages/workspaceMember";
 import { useSelector } from "react-redux";
 import { EnDeveloppementMini } from "./Components/EnDeveloppement";
+import Compte from "./pages/workspaceMember/pages/compte";
 function App() {
   const user = useSelector((state) => state.user.data);
   return (
@@ -24,7 +25,8 @@ function App() {
           user == null ? <Navigate replace to={"/auth"} /> : <Workspace />
         }
       >
-        <Route index element={<EnDeveloppementMini />} />
+        <Route index element={<Navigate replace to={"compte"} />} />
+        <Route path="compte" element={<Compte />} />
         <Route path="*" element={<EnDeveloppementMini />} />
       </Route>
       <Route path="*" element={<Page404 />} />

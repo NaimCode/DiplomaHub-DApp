@@ -51,7 +51,7 @@ function AccountMenu() {
     setAnchorEl(null);
   };
   return (
-    <React.Fragment>
+    <>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <IconButton
           onClick={handleClick}
@@ -117,6 +117,6 @@ function AccountMenu() {
           Déconnexion
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </>
   );
 }
