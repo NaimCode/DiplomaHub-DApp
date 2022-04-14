@@ -34,11 +34,7 @@ const Auth = () => {
         password,
         isMember,
       })
-      .then((v) =>
-        dispatch(
-          connexion({ id: v.data._id, email: v.data.email, isMember: true })
-        )
-      )
+      .then((v) => dispatch(connexion({ data: v.data, isMember: true })))
       .catch((v) => seterror(v.response.data.error))
       .finally(() => setloading(false));
   };

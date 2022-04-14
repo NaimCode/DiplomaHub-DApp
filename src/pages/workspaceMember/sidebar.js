@@ -23,10 +23,17 @@ import {
   IoIosPeople as EtudiantsIcon,
   IoIosSchool as FormationsIcon,
 } from "react-icons/io";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+  useNavigationType,
+} from "react-router-dom";
 const drawerWidth = 240;
 
 export default function Sidebar() {
+  let navigation = useNavigate();
+  let location = useLocation();
   return (
     <Drawer
       sx={{
@@ -53,20 +60,33 @@ export default function Sidebar() {
               </span>
             )}
             <List>
-              {m.menu.map((text, index) => (
-                <Link to={text.route}>
-                  <ListItem
-                    button
-                    key={text}
-                    className="hover:text-primaire-normal hover:bg-primaire-normal/10 group"
-                  >
-                    <ListItemIcon className=" group-hover:text-primaire-normal">
-                      {text.icon("text-2xl")}
-                    </ListItemIcon>
-                    <ListItemText primary={text.titre} />
-                  </ListItem>
-                </Link>
-              ))}
+              {m.menu.map((text, index) => {
+                const isCurrent = location.pathname.includes(text.route);
+                return (
+                  <Link to={text.route}>
+                    <ListItem
+                      button
+                      key={text}
+                      className={`hover:text-primaire-normal hover:bg-primaire-normal/10 group text-black hover:opacity-100 opacity-70 ${
+                        isCurrent &&
+                        "text-primaire-normal bg-primaire-normal/10 opacity-100"
+                      }`}
+                    >
+                      <ListItemIcon
+                        className={` group-hover:text-primaire-normal text-black ${
+                          isCurrent && "text-primaire-normal "
+                        }`}
+                      >
+                        {text.icon("text-2xl")}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={text.titre}
+                        className="text-sm font-titre1 !important"
+                      />
+                    </ListItem>
+                  </Link>
+                );
+              })}
             </List>
           </>
         ))}
@@ -81,7 +101,7 @@ const menu = [
     menu: [
       {
         titre: "Etablissement",
-        route: "/",
+        route: "/workspace/etablissement",
         icon: (style) => <EtablissementIcon className={style} />,
       },
     ],
@@ -91,17 +111,17 @@ const menu = [
     menu: [
       {
         titre: "Membres",
-        route: "/membres",
+        route: "membres",
         icon: (style) => <MembreIcon className={style} />,
       },
       {
         titre: "Etudiants",
-        route: "/etudiants",
+        route: "etudiants",
         icon: (style) => <EtudiantsIcon className={style} />,
       },
       {
         titre: "Formations",
-        route: "/formations",
+        route: "formations",
         icon: (style) => <FormationsIcon className={style} />,
       },
     ],
@@ -111,12 +131,12 @@ const menu = [
     menu: [
       {
         titre: "Contrats",
-        route: "/contrats",
+        route: "contrats",
         icon: (style) => <ContractIcon className={style} />,
       },
       {
         titre: "Parténariats",
-        route: "/partenariats",
+        route: "partenariats",
         icon: (style) => <PartenaireIcon className={style} />,
       },
     ],
@@ -126,7 +146,7 @@ const menu = [
     menu: [
       {
         titre: "Transactions",
-        route: "/transactions",
+        route: "transactions",
         icon: (style) => <TransactionIcon className={style} />,
       },
     ],

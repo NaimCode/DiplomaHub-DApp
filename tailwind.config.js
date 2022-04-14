@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        titre1: ["Prompt", "sans-serif"],
         corps_1: ["Lato", "sans-serif"],
         corps_2: ["Spartant", "sans-serif"],
       },

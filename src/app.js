@@ -5,24 +5,28 @@ import Home from "./pages/home";
 import Inscription from "./pages/inscription";
 import Workspace from "./pages/workspaceMember";
 import { useSelector } from "react-redux";
+import { EnDeveloppementMini } from "./Components/EnDeveloppement";
 function App() {
-  const user_id = useSelector((state) => state.user.id);
+  const user = useSelector((state) => state.user.data);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
         path="/auth"
         element={
-          user_id != null ? <Navigate replace to={"/workspace"} /> : <Auth />
+          user != null ? <Navigate replace to={"/workspace"} /> : <Auth />
         }
       />
       <Route path="/inscription" element={<Inscription />} />
       <Route
         path="/workspace"
         element={
-          user_id == null ? <Navigate replace to={"/auth"} /> : <Workspace />
+          user == null ? <Navigate replace to={"/auth"} /> : <Workspace />
         }
-      />
+      >
+        <Route index element={<EnDeveloppementMini />} />
+        <Route path="*" element={<EnDeveloppementMini />} />
+      </Route>
       <Route path="*" element={<Page404 />} />
     </Routes>
   );
