@@ -101,11 +101,6 @@ const menu = [
     head: "",
     menu: [
       {
-        titre: "Compte",
-        route: "compte",
-        icon: (style) => <Person className={style} />,
-      },
-      {
         titre: "Etablissement",
         route: "etablissement",
         icon: (style) => <EtablissementIcon className={style} />,

@@ -7,7 +7,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import { useSelector, useDispatch } from "react-redux";
-import { LogoutTwoTone, PersonOutlineTwoTone } from "@mui/icons-material";
+import {
+  LogoutTwoTone,
+  PersonAddAlt1,
+  PersonOutlineTwoTone,
+  PersonTwoTone,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -61,7 +66,9 @@ function AccountMenu() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar className="bg-white text-darker">{user.email[0]}</Avatar>
+          <Avatar className="bg-white text-darker uppercase">
+            {user.nom[0] ?? user.email[0]}
+          </Avatar>
         </IconButton>
       </Box>
       <Menu

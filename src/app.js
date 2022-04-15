@@ -7,6 +7,7 @@ import Workspace from "./pages/workspaceMember";
 import { useSelector } from "react-redux";
 import { EnDeveloppementMini } from "./Components/EnDeveloppement";
 import Compte from "./pages/workspaceMember/pages/compte";
+import MembresPage from "./pages/workspaceMember/pages/membres";
 function App() {
   const user = useSelector((state) => state.user.data);
   return (
@@ -15,18 +16,19 @@ function App() {
       <Route
         path="/auth"
         element={
-          user != null ? <Navigate replace to={"/workspace"} /> : <Auth />
+          user !== null ? <Navigate replace to={"/workspace"} /> : <Auth />
         }
       />
       <Route path="/inscription" element={<Inscription />} />
       <Route
         path="/workspace"
         element={
-          user == null ? <Navigate replace to={"/auth"} /> : <Workspace />
+          user === null ? <Navigate replace to={"/auth"} /> : <Workspace />
         }
       >
         <Route index element={<Navigate replace to={"compte"} />} />
         <Route path="compte" element={<Compte />} />
+        <Route path="membres" element={<MembresPage />} />
         <Route path="*" element={<EnDeveloppementMini />} />
       </Route>
       <Route path="*" element={<Page404 />} />
