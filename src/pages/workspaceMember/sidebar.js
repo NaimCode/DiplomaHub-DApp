@@ -1,6 +1,6 @@
 import * as React from "react";
 import Drawer from "@mui/material/Drawer";
-
+import * as contactusAnimation from "../../../public/animations/contactus.json";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 
@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Person } from "@mui/icons-material";
+import { Person, Settings } from "@mui/icons-material";
 import { Brand } from "../../Components/Logo";
 import {
   FaSchool as EtablissementIcon,
@@ -30,6 +30,8 @@ import {
   useLocation,
   useNavigationType,
 } from "react-router-dom";
+import MyLottie from "../../Components/MyLottie";
+import { Button } from "@mui/material";
 const drawerWidth = 240;
 
 export default function Sidebar() {
@@ -48,18 +50,14 @@ export default function Sidebar() {
       variant="permanent"
       anchor="left"
     >
-      <Toolbar className="h-[130px]">
+      <Toolbar className="h-[200px]">
         <Brand />
       </Toolbar>
       <List>
         {menu.map((m, i) => (
           <>
             <Divider />
-            {i !== 0 && (
-              <span className="pt-2 pl-2 font-corps_2 font-semibold uppercase text-[11px] text-darker">
-                {m.head}
-              </span>
-            )}
+
             <List>
               {m.menu.map((text, index) => {
                 const isCurrent = location.pathname.includes(text.route);
@@ -68,13 +66,13 @@ export default function Sidebar() {
                     <ListItem
                       button
                       key={text}
-                      className={`hover:text-primaire-normal hover:bg-primaire-normal/10 group text-black hover:opacity-100 opacity-70 ${
+                      className={`hover:text-primaire-normal hover:bg-primaire-normal/10 group text-darker hover:opacity-100 opacity-100 font-corps_1 ${
                         isCurrent &&
                         "text-primaire-normal bg-primaire-normal/10 opacity-100"
                       }`}
                     >
                       <ListItemIcon
-                        className={` group-hover:text-primaire-normal text-black ${
+                        className={` group-hover:text-primaire-normal text-darker ${
                           isCurrent && "text-primaire-normal "
                         }`}
                       >
@@ -92,6 +90,16 @@ export default function Sidebar() {
           </>
         ))}
       </List>
+      <div className="flex flex-col justify-end h-full items-center">
+        <MyLottie data={contactusAnimation} />
+        <Button
+          variant="outlined"
+          color="primary"
+          className="-translate-y-[30px]"
+        >
+          Contactez-nous
+        </Button>
+      </div>
     </Drawer>
   );
 }
@@ -105,11 +113,6 @@ const menu = [
         route: "etablissement",
         icon: (style) => <EtablissementIcon className={style} />,
       },
-    ],
-  },
-  {
-    head: "Gestion",
-    menu: [
       {
         titre: "Membres",
         route: "membres",
@@ -121,34 +124,14 @@ const menu = [
         icon: (style) => <EtudiantsIcon className={style} />,
       },
       {
-        titre: "Formations",
-        route: "formations",
-        icon: (style) => <FormationsIcon className={style} />,
-      },
-    ],
-  },
-  {
-    head: "jumelage",
-    menu: [
-      {
-        titre: "Contrats",
-        route: "contrats",
-        icon: (style) => <ContractIcon className={style} />,
-      },
-      {
-        titre: "Parténariats",
-        route: "partenariats",
-        icon: (style) => <PartenaireIcon className={style} />,
-      },
-    ],
-  },
-  {
-    head: "plus",
-    menu: [
-      {
         titre: "Transactions",
         route: "transactions",
         icon: (style) => <TransactionIcon className={style} />,
+      },
+      {
+        titre: "Paramètre",
+        route: "parametre",
+        icon: (style) => <Settings className={style} />,
       },
     ],
   },

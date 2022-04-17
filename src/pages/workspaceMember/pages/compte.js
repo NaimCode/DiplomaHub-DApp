@@ -62,7 +62,7 @@ const Compte = () => {
       <span className="text-sm font-corps_1 text-black/40 uppercase">
         Aperçu de mon compte
       </span>
-      <MyLottie data={dataAnimation} size="h-[200px]" />
+      <MyLottie data={dataAnimation} size=" w-[20vw]" />
       <div className="w-full max-w-2xl  rounded-sm flex flex-col gap-6">
         <div className="flex flex-row gap-5">
           <TextField

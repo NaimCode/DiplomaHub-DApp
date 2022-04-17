@@ -42,7 +42,6 @@ const Appbar = () => {
     </AppBar>
   );
 };
-
 export default Appbar;
 
 const AccountMenu = ({ drawer }) => {

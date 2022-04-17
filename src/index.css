@@ -19,10 +19,10 @@
      @apply text-4xl font-corps_1 font-bold py-4 !important
    }
    h2{
-    @apply text-3xl font-corps_1 font-bold py-2 !important
+    @apply text-2xl font-titre1 py-2 !important
   }
   h3{
-    @apply text-xl font-corps_1 font-semibold py-2 !important
+    @apply text-xl font-titre1 font-semibold py-2 !important
   }
   }
 

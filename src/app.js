@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { EnDeveloppementMini } from "./Components/EnDeveloppement";
 import Compte from "./pages/workspaceMember/pages/compte";
 import MembresPage from "./pages/workspaceMember/pages/membres";
+import Parametre from "./pages/workspaceMember/pages/parametre";
 function App() {
   const user = useSelector((state) => state.user.data);
 
@@ -30,6 +31,7 @@ function App() {
         <Route index element={<Navigate replace to={"etablissement"} />} />
         <Route path="compte" element={<Compte />} />
         <Route path="membres" element={<MembresPage />} />
+        <Route path="parametre" element={<Parametre />} />
         <Route path="*" element={<EnDeveloppementMini />} />
       </Route>
       <Route path="*" element={<Page404 />} />
