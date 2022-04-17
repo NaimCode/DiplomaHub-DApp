@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AddTwoTone } from "@mui/icons-material";
 import {
   Card,
@@ -15,38 +16,54 @@ import {
   TextField,
   DialogActions,
   CircularProgress,
+  List,
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { SERVER_URL } from "../../../../Data/serveur";
+import ItemRole from "./itemRole";
 
 const eRole = ["Affichage", "Importation", "Certification"];
 const rRole = ["Affichage", "Ajoût", "Suppression"];
 const etRole = ["Affichage", "Modification"];
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+  createData("Cupcake", 305, 3.7, 67, 4.3),
+  createData("Gingerbread", 356, 16.0, 49, 3.9),
+];
 const Role = () => {
   const [openDialog, setopenDialog] = useState(false);
   const user = useSelector((state) => state.user.data);
-  const [roles, setroles] = useState();
-  const [errr, seterrr] = useState(null);
+  let [roles, setroles] = useState(null);
+  let [errr, seterrr] = useState(null);
   const [isLoading, setisLoading] = useState(false);
   useEffect(() => {
+    getRoles();
+  }, []);
+  function getRoles() {
     setisLoading(true);
-    console.log(user);
+
     axios
       .get(SERVER_URL + "/role/getAll/" + user.etablissement_id)
       .then((v) => {
-        console.log(v.data);
-        setroles(v.data);
+        roles = v.data;
+        setroles(roles);
       })
       .catch((v) => console.log(v.response))
       .finally(() => setisLoading(false));
-  }, [user]);
-
+  }
   return (
     <div className="py-8 px-4 bg-white border-[1px]">
       <Snackbar
-        open={errr}
+        open={errr != null}
         autoHideDuration={6000}
         onClose={() => seterrr(null)}
       >
@@ -73,6 +90,7 @@ const Role = () => {
             seterrr={seterrr}
             etablissement_id={user.etablissement_id}
             roles={roles}
+            errr={errr}
             setroles={setroles}
           />
           <div className="flex flex-row gap-2 justify-between">
@@ -92,9 +110,9 @@ const Role = () => {
           </div>
           <Divider />
           {roles ? (
-            <p>Pas de roles</p>
+            <ItemRole rows={rows} roles={roles.reverse()} />
           ) : (
-            roles.map((v, i) => <p key={i}>{v}</p>)
+            <p className="pt-4 opacity-30">Vous n'avez aucun rôle encore</p>
           )}
         </>
       )}
@@ -110,6 +128,7 @@ const RoleDialog = ({
   seterrr,
   etablissement_id,
   setroles,
+  errr,
   roles,
 }) => {
   const [membre, setmembre] = useState([]);
@@ -133,12 +152,10 @@ const RoleDialog = ({
         description,
       })
       .then((v) => {
-        seterrr("Vous avez ajouté un nouveau rôle");
-        console.log(v.data);
+        errr = "Vous avez ajouté un nouveau rôle";
+        seterrr(errr);
         roles.push(v.data);
         setroles(roles);
-
-        console.log(roles);
         setopenDialog(false);
       })
       .catch((v) => seterrr("Erreur d'ajoût"))
@@ -158,6 +175,7 @@ const RoleDialog = ({
             type={"text"}
             fullWidth
             size="small"
+            required
             value={intitule}
             onChange={(v) => setintitule(v.target.value)}
             style={{ marginBottom: 10 }}
@@ -181,7 +199,6 @@ const RoleDialog = ({
             variant="filled"
             label="Gestion de l'établissement"
             fullWidth
-            required
             SelectProps={{
               multiple: true,
               value: eta,
@@ -205,7 +222,6 @@ const RoleDialog = ({
             variant="filled"
             label="Gestion des membres"
             fullWidth
-            required
             SelectProps={{
               multiple: true,
               value: membre,
@@ -227,7 +243,6 @@ const RoleDialog = ({
             variant="filled"
             label="Gestion des étudiants"
             fullWidth
-            required
             SelectProps={{
               multiple: true,
               value: etudiant,
@@ -251,7 +266,6 @@ const RoleDialog = ({
             variant="filled"
             label="Gestion des rôles"
             fullWidth
-            required
             SelectProps={{
               multiple: true,
               value: role,
@@ -284,7 +298,12 @@ const RoleDialog = ({
               <CircularProgress size={24} />
             </Button>
           ) : (
-            <Button type="submit" variant="contained" color="primary">
+            <Button
+              disableElevation
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
               Ajouter
             </Button>
           )}
