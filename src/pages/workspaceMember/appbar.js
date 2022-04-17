@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Avatar } from "@mui/material";
+import { AppBar, Toolbar, Avatar, Drawer } from "@mui/material";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -21,6 +21,7 @@ import { deconnexion } from "../../redux/userSlice";
 const Appbar = () => {
   const [etablissement, setetablissement] = useState();
   const user = useSelector((state) => state.user.data);
+  const [openDrawer, setopenDrawer] = useState(false);
   useEffect(() => {
     axios
       .get(SERVER_URL + "/etablissement/" + user.etablissement_id)
@@ -44,9 +45,10 @@ const Appbar = () => {
 
 export default Appbar;
 
-function AccountMenu() {
+const AccountMenu = ({ drawer }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const user = useSelector((state) => state.user.data);
   const dispatch = useDispatch();
   const handleClick = (event) => {
@@ -67,7 +69,7 @@ function AccountMenu() {
           aria-expanded={open ? "true" : undefined}
         >
           <Avatar className="bg-white text-darker uppercase">
-            {user.nom[0] ?? user.email[0]}
+            {user.email[0]}
           </Avatar>
         </IconButton>
       </Box>
@@ -126,4 +128,4 @@ function AccountMenu() {
       </Menu>
     </>
   );
-}
+};

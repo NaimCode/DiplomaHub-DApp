@@ -41,7 +41,7 @@ const Compte = () => {
         setinfo("Profil modifié");
         dispatch(update(v.data));
       })
-      .catch(console.log("Erreur d'update"));
+      .catch((v) => console.log(v.response));
   };
   return (
     <div className="w-full flex flex-col justify-center items-center">
@@ -107,7 +107,7 @@ const Compte = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => updateUser(user.id, { nom, prenom })}
+              onClick={() => updateUser(user.data._id, { nom, prenom })}
             >
               Confirmer
             </Button>

@@ -10,6 +10,7 @@ import Compte from "./pages/workspaceMember/pages/compte";
 import MembresPage from "./pages/workspaceMember/pages/membres";
 function App() {
   const user = useSelector((state) => state.user.data);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -26,7 +27,7 @@ function App() {
           user === null ? <Navigate replace to={"/auth"} /> : <Workspace />
         }
       >
-        <Route index element={<Navigate replace to={"compte"} />} />
+        <Route index element={<Navigate replace to={"etablissement"} />} />
         <Route path="compte" element={<Compte />} />
         <Route path="membres" element={<MembresPage />} />
         <Route path="*" element={<EnDeveloppementMini />} />

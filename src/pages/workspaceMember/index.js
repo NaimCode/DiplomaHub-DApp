@@ -12,6 +12,7 @@ export default function WorkspaceMember() {
     <Box className="flex">
       <Appbar />
       <Sidebar />
+
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
         <Outlet />
