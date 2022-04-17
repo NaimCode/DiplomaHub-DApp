@@ -18,16 +18,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../../Data/serveur";
 import { deconnexion } from "../../redux/userSlice";
+import { avatarUrl } from "../../Data/avatar";
 const Appbar = () => {
-  const [etablissement, setetablissement] = useState();
   const user = useSelector((state) => state.user.data);
+  const etablissement = user.etablissement_id;
   const [openDrawer, setopenDrawer] = useState(false);
-  useEffect(() => {
-    axios
-      .get(SERVER_URL + "/etablissement/" + user.etablissement_id)
-      .then((v) => setetablissement(v.data))
-      .catch((v) => console.log(v.response));
-  });
 
   return (
     <AppBar

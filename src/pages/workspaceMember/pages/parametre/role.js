@@ -52,7 +52,7 @@ const Role = () => {
     setisLoading(true);
 
     axios
-      .get(SERVER_URL + "/role/getAll/" + user.etablissement_id)
+      .get(SERVER_URL + "/role/getAll/" + user.etablissement_id._id)
       .then((v) => {
         roles = v.data;
         setroles(roles);
@@ -62,22 +62,6 @@ const Role = () => {
   }
   return (
     <div className="py-8 px-4 bg-white border-[1px]">
-      <Snackbar
-        open={errr != null}
-        autoHideDuration={6000}
-        onClose={() => seterrr(null)}
-      >
-        <Alert
-          onClose={() => seterrr(null)}
-          severity={`${
-            errr === "Vous avez ajouté un nouveau rôle" ? "success" : "warning"
-          }`}
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          {errr}
-        </Alert>
-      </Snackbar>
       {isLoading ? (
         <div className="flex items-center justify-center py-10">
           <CircularProgress />

@@ -9,6 +9,11 @@ import { EnDeveloppementMini } from "./Components/EnDeveloppement";
 import Compte from "./pages/workspaceMember/pages/compte";
 import MembresPage from "./pages/workspaceMember/pages/membres";
 import Parametre from "./pages/workspaceMember/pages/parametre";
+import axios from "axios";
+import { useEffect } from "react";
+import { SERVER_URL } from "./Data/serveur";
+import { useDispatch } from "react-redux";
+import { update } from "./redux/userSlice";
 function App() {
   const user = useSelector((state) => state.user.data);
 
