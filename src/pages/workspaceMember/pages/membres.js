@@ -28,6 +28,7 @@ import { useSelector } from "react-redux";
 import MyLottie from "../../../Components/MyLottie";
 import Lottie from "react-lottie";
 import { avatarUrl } from "../../../Data/avatar";
+import SelectableTextField from "../../../Components/workspace/roleSelection";
 const MembresPage = () => {
   const [open, setOpen] = React.useState(false);
   const [openDialog, setopenDialog] = useState(false);
@@ -113,23 +114,30 @@ const AddComponent = ({ open, handleClose, membres, setmembres }) => {
   const [prenom, setprenom] = useState();
   const [email, setemail] = useState();
   const [isLoading, setisLoading] = useState(false);
+  const [roles, setroles] = useState([]);
+
   const etablissement_id = useSelector(
     (state) => state.user.data.etablissement_id
   );
+
   const Submit = (event) => {
     event.preventDefault();
     setisLoading(true);
+    // console.log(roles);
+    const data = {
+      nom,
+      prenom,
+      email,
+      etablissement_id,
+      roles: roles.map((v) => v._id),
+    };
+
     axios
-      .post(SERVER_URL + "/membre/add", {
-        nom,
-        prenom,
-        email,
-        etablissement_id,
-      })
+      .post(SERVER_URL + "/membre/add", data)
       .then((v) => {
         seterrr("success");
         console.log(v.data);
-        membres.push(v.data);
+        membres.push({ ...data, roles });
         setmembres(membres);
         handleClose();
       })
@@ -192,6 +200,7 @@ const AddComponent = ({ open, handleClose, membres, setmembres }) => {
             value={email}
             onChange={(v) => setemail(v.target.value)}
           />
+          <SelectableTextField list={roles} setlist={setroles} label="Rôles" />
         </DialogContent>
 
         <DialogActions>
