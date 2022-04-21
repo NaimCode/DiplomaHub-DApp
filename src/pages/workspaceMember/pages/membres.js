@@ -2,36 +2,30 @@
 import "@dotlottie/player-component";
 import React from "react";
 import {
-  Fab,
   Tooltip,
   Button,
   DialogActions,
   Dialog,
   TextField,
-  Collapse,
   Alert,
   CircularProgress,
   Snackbar,
   Divider,
   List,
-  Chip,
 } from "@mui/material";
-import { Add, AddTwoTone } from "@mui/icons-material";
+import { AddTwoTone } from "@mui/icons-material";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../../../Data/serveur";
 import { useSelector } from "react-redux";
-import MyLottie from "../../../Components/MyLottie";
-import Lottie from "react-lottie";
-import { avatarUrl } from "../../../Data/avatar";
 import SelectableTextField from "../../../Components/workspace/roleSelection";
+import ItemMembre from "./membres/membreItem";
+import { useNavigate } from "react-router";
 const MembresPage = () => {
   const [open, setOpen] = React.useState(false);
-  const [openDialog, setopenDialog] = useState(false);
+
   const user = useSelector((state) => state.user.data);
   let [membres, setmembres] = useState(null);
 
@@ -115,7 +109,7 @@ const AddComponent = ({ open, handleClose, membres, setmembres }) => {
   const [email, setemail] = useState();
   const [isLoading, setisLoading] = useState(false);
   const [roles, setroles] = useState([]);
-
+  const nav = useNavigate();
   const etablissement_id = useSelector(
     (state) => state.user.data.etablissement_id
   );
@@ -136,10 +130,7 @@ const AddComponent = ({ open, handleClose, membres, setmembres }) => {
       .post(SERVER_URL + "/membre/add", data)
       .then((v) => {
         seterrr("success");
-        console.log(v.data);
-        membres.push({ ...data, roles });
-        setmembres(membres);
-        handleClose();
+        nav(0);
       })
       .catch((v) => seterrr(v.response.data.error))
       .finally(() => setisLoading(false));
@@ -218,35 +209,5 @@ const AddComponent = ({ open, handleClose, membres, setmembres }) => {
         </DialogActions>
       </form>
     </Dialog>
-  );
-};
-
-const ItemMembre = ({ membre }) => {
-  return (
-    <div className="w-full p-4 lg:w-1/2 transition-all duration-300 ">
-      <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-        <dotlottie-player
-          //  autoplay
-          loop
-          hover
-          mode="normal"
-          src={membre.avatar ? avatarUrl[membre.avatar].src : avatarUrl[0].src}
-          style={{ height: "200px", width: "200px" }}
-        ></dotlottie-player>
-        <div className="flex-grow sm:pl-4">
-          <h6 className="title-font font-medium text-lg text-gray-900">
-            {membre.nom ?? "---"} {membre.prenom ?? "---"}
-          </h6>
-          <Divider />
-          <p className="text-gray-500 ">{membre.email}</p>
-          <br className="grow" />
-          <div className="flex flex-wrap gap-2">
-            {membre.roles.map((v, i) => (
-              <Chip key={i} label={v.intitule} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };

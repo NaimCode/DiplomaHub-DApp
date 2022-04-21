@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import CardMedia from "@mui/material/CardMedia";
+
 import {
   TextField,
   Button,
@@ -8,21 +8,18 @@ import {
   Snackbar,
   Alert,
   Box,
-  IconButton,
   Menu,
   MenuItem,
   List,
+  Chip,
+  Tooltip,
 } from "@mui/material";
-import { useState, useEffect, Children } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as dataAnimation from "../../../../public/animations/profile.json";
-import MyLottie from "../../../Components/MyLottie";
 import { update } from "../../../redux/userSlice";
 import axios from "axios";
 import { SERVER_URL } from "../../../Data/serveur";
 import { avatarUrl } from "../../../Data/avatar";
-import { useNavigate } from "react-router";
-import ItemRole, { ItemRoleMini } from "./parametre/itemRole";
 
 const Compte = () => {
   const user = useSelector((state) => state.user);
@@ -33,6 +30,7 @@ const Compte = () => {
   const [info, setinfo] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(user);
     reset();
   }, [user]);
   useEffect(() => {
@@ -85,6 +83,17 @@ const Compte = () => {
       <AvatarChange updateAvatar={updateUser} id={user.data._id} />
 
       <div className="w-full max-w-2xl  rounded-sm flex flex-col gap-6 mt-4">
+        <List className="flex flex-wrap gap-3 items-center justify-center">
+          {user.data.roles.map((e, i) => (
+            <Tooltip title="Rôle">
+              <Chip
+                key={i}
+                label={e.intitule}
+                className="font-titre1 hover:shadow-md transition-all duration-200"
+              />
+            </Tooltip>
+          ))}
+        </List>
         <div className="flex flex-row gap-5">
           <TextField
             label="Nom"
@@ -145,9 +154,7 @@ export default Compte;
 const AvatarChange = ({ updateAvatar, id }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const navigation = useNavigate();
-  const user = useSelector((state) => state.user.data);
-  const dispatch = useDispatch();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
