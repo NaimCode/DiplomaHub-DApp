@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import notifSlice from "./notifSlice";
 
 const persistConfig = {
   key: "root",
@@ -19,7 +20,7 @@ const persistConfig = {
 };
 const persistedReducer = persistReducer(persistConfig, userReducer);
 export const store = configureStore({
-  reducer: { user: persistedReducer },
+  reducer: { user: persistedReducer, notif: notifSlice },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

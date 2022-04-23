@@ -18,21 +18,10 @@ import { useSelector } from "react-redux";
 import { SERVER_URL } from "../../../../Data/serveur";
 import ItemRole from "./itemRole";
 
-const eRole = ["Affichage", "Importation", "Certification"];
-const rRole = ["Affichage", "Ajoût", "Suppression"];
-const etRole = ["Affichage", "Modification"];
+export const eRole = ["Affichage", "Importation", "Certification"];
+export const rRole = ["Affichage", "Ajoût", "Suppression"];
+export const etRole = ["Affichage", "Modification"];
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 const Role = () => {
   const [openDialog, setopenDialog] = useState(false);
   const user = useSelector((state) => state.user.data);
@@ -88,7 +77,7 @@ const Role = () => {
           </div>
           <Divider />
           {roles ? (
-            <ItemRole rows={rows} roles={roles.reverse()} />
+            <ItemRole roles={roles.reverse()} />
           ) : (
             <p className="pt-4 opacity-30">Vous n'avez aucun rôle encore</p>
           )}

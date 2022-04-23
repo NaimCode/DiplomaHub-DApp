@@ -19,6 +19,7 @@ import axios from "axios";
 import { SERVER_URL } from "../../Data/serveur";
 import { deconnexion } from "../../redux/userSlice";
 import { avatarUrl } from "../../Data/avatar";
+
 const Appbar = () => {
   const user = useSelector((state) => state.user.data);
   const etablissement = user.etablissement_id;
