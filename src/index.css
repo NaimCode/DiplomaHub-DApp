@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif+Display:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind components;
 @tailwind utilities;
 @tailwind base;
@@ -9,9 +9,21 @@
    .titre1{
      @apply font-corps_1
    }
-   h1{
-     @apply text-5xl font-corps_1 font-bold py-4 !important
+   body,html{
+     @apply bg-background p-0 m-0 !important
    }
+   p{
+     @apply text-opacity-70 !important
+   }
+   h1{
+     @apply text-4xl font-corps_1 font-bold py-4 !important
+   }
+   h2{
+    @apply text-2xl font-titre1 py-2 !important
+  }
+  h3{
+    @apply text-xl font-titre1 font-semibold py-2 !important
+  }
   }
 
 body,html{

@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import { motion, MotionConfig } from "framer-motion";
 import { Link } from "react-router-dom";
 import { SearchTwoTone, SchoolTwoTone } from "@mui/icons-material";
+// import { useEffect } from "react";
+// import { useSelector } from "react-redux";
 const Home = () => {
   const defaultOptions = {
     loop: true,
@@ -25,6 +27,7 @@ const Home = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   return (
     <section>
       <Helmet>
@@ -44,16 +47,20 @@ const Home = () => {
             animate={{
               y: "0%",
             }}
-            className="w-[40%] flex transform flex-col justify-center p-10 -translate-x-[100px]"
+            className="w-[45%] flex transform flex-col justify-center p-10 -translate-x-[100px]"
           >
-            <h1 className="">
-              Lorem Ipsum is simply dummy text of the printing
-            </h1>
-            <p className="py-4 text-sm text-opacity-60">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters,
+            <p className="text-3xl font-corps_1 font-bold py-4">
+              DIPLÔMES, MICRO-CERTIFICATIONS ET ATTESTATION SUR LA{" "}
+              <span className="text-secondaire-normal font-titre1">
+                BLOCKCHAIN
+              </span>
+            </p>
+            <p className="py-4 text-sm opacity-50">
+              Donnez la chance à vos étudiants de faire valoir l'authenticité de
+              leur réussite d'un simple clic : un gage de confiance pour toutes
+              les étapes de la vie professionnelle. Les étudiants disposent à
+              vie d'attestations en ligne, partageables sur tous supports. C'est
+              la fin des demandes intempestives de vérification ou de duplicata.
             </p>
             <div className="flex flex-row gap-8 py-7">
               <Button
@@ -61,7 +68,7 @@ const Home = () => {
                 color="primary"
                 startIcon={<SchoolTwoTone />}
               >
-                <Link to={"/inscrireEcole"}>Inscrire une école</Link>
+                <Link to={"/inscription"}>Inscrire mon école</Link>
               </Button>
               <Button
                 variant="outlined"
@@ -81,7 +88,7 @@ const Home = () => {
             animate={{
               x: "0%",
             }}
-            className="w-[60%] relative "
+            className="w-[55%] relative "
           >
             <Lottie options={defaultOptions} />
             <MotionConfig transition={{ duration: 1, delay: 3 * 0.5 }}>
