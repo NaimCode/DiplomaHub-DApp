@@ -20,7 +20,7 @@ import { update } from "../../../redux/userSlice";
 import axios from "axios";
 import { SERVER_URL } from "../../../Data/serveur";
 import { avatarUrl } from "../../../Data/avatar";
-
+import { notifier } from "../../../redux/notifSlice";
 const Compte = () => {
   const user = useSelector((state) => state.user);
   const [nom, setnom] = useState();
@@ -30,7 +30,6 @@ const Compte = () => {
   const [info, setinfo] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(user);
     reset();
   }, [user]);
   useEffect(() => {
@@ -51,7 +50,9 @@ const Compte = () => {
         setinfo("Profil modifié");
         dispatch(update(v.data));
       })
-      .catch((v) => console.log(v.response));
+      .catch((v) =>
+        dispatch(notifier({ message: "Impossible de modifier", type: "error" }))
+      );
   };
 
   return (

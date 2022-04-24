@@ -2,6 +2,8 @@
 import {
   AddTwoTone,
   DeleteTwoTone,
+  FileDownloadDoneTwoTone,
+  FileUploadTwoTone,
   UploadFileTwoTone,
 } from "@mui/icons-material";
 import {
@@ -29,12 +31,17 @@ import { Chip } from "@mui/material";
 import { SERVER_URL } from "../../../../Data/serveur";
 import { AddEtudiant } from "./addEtudiant";
 import { notifier } from "../../../../redux/notifSlice";
+import ImportDialog from "./importDialog";
+import AddDoc from "./addDoc";
 const Certification = () => {
   const [openDialog, setopenDialog] = useState(false);
+  const [openDialogImport, setopenDialogImport] = useState(false);
+
   const user = useSelector((state) => state.user.data);
   let [etudiants, setetudiants] = useState(null);
   let [errr, seterrr] = useState(null);
   const [isLoading, setisLoading] = useState(false);
+
   const dis = useDispatch();
   const Close = () => {
     setopenDialog(false);
@@ -49,6 +56,7 @@ const Certification = () => {
       .get(SERVER_URL + "/mesEtudiants/getAll/" + user.etablissement_id._id)
       .then((v) => {
         etudiants = v.data;
+
         setetudiants(etudiants);
       })
       .catch((v) => console.log(v.response))
@@ -115,6 +123,12 @@ const Certification = () => {
             etudiants={etudiants}
             setetudiants={setetudiants}
           />
+          <ImportDialog
+            open={openDialogImport}
+            setOpen={setopenDialogImport}
+            mesEtudiants={etudiants}
+            setmesEtudiants={setetudiants}
+          />
           <div className="flex flex-row gap-2 justify-between">
             <h2>Liste des étudiants</h2>
             <div className="flex flex-row gap-2 items-center">
@@ -137,7 +151,7 @@ const Certification = () => {
                   size="small"
                   className="my-2"
                   startIcon={<UploadFileTwoTone />}
-                  onClick={() => setopenDialog(true)}
+                  onClick={() => setopenDialogImport(true)}
                 >
                   Importer
                 </Button>
@@ -213,7 +227,11 @@ const getColor = (i) => {
 //      <DeleteTwoTone className="text-[20px]" />
 //    </IconButton>
 //  </div>;
-function ItemCertif({ etudiants, deleteEtudiant }) {
+
+export function ItemCertif({ etudiants, deleteEtudiant }) {
+  const [openAssocier, setopenAssocier] = useState(false);
+  const [data, setdata] = useState(etudiants[0]);
+
   const getDateTime = (t) => {
     const today = new Date(t);
     var date =
@@ -226,8 +244,17 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
     //   today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     return date;
   };
+  const OpenAssociation = (e) => {
+    setdata(e);
+    setopenAssocier(true);
+  };
   return (
     <>
+      <AddDoc
+        open={openAssocier}
+        setopenAssocier={setopenAssocier}
+        data={data}
+      />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead
@@ -281,8 +308,10 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                           size="small"
                           style={{ fontSize: 12 }}
                           color="primary"
+                          onClick={() => OpenAssociation(row)}
+                          startIcon={<FileUploadTwoTone />}
                         >
-                          Certifier
+                          Associer
                         </Button>
                       </div>
                     </StyledTableCell>

@@ -1,15 +1,19 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
+import { Outlet, useLocation, useNavigate } from "react-router";
 import SwipeableViews from "react-swipeable-views";
 import { EnDeveloppementMini } from "../../../../Components/EnDeveloppement";
 import Role from "../parametre/role";
-import Certification from "./certification";
+import EnAttente from "./enAttente";
+import Certification from "./importation";
 
 const Etudiants = () => {
+  const loc = useLocation();
   const [value, setValue] = React.useState(1);
-
+  const nav = useNavigate();
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    nav(`${newValue}`);
   };
 
   return (
@@ -23,16 +27,14 @@ const Etudiants = () => {
           aria-label="secondary tabs example"
           variant="fullWidth"
         >
-          <Tab value={1} label="Certification" />
-          <Tab value={2} label="Déjà certifiés" />
+          <Tab value={1} label="Importation" />
+          <Tab value={2} label="En Attente" />
+          <Tab value={3} label="Certifiés" />
         </Tabs>
-        <SwipeableViews index={value} onChangeIndex={handleChange}>
+        {/* <SwipeableViews index={value} onChangeIndex={handleChange}>
           <div />
-          <Certification />
-          <div className="flex pt-10 justify-center items-center">
-            <EnDeveloppementMini />
-          </div>
-        </SwipeableViews>
+        </SwipeableViews> */}
+        <Outlet />
       </Box>
     </div>
   );
