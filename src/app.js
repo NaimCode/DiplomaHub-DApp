@@ -17,6 +17,7 @@ import { update } from "./redux/userSlice";
 import Etablissement from "./pages/workspaceMember/pages/etablissement";
 import Test from "./pages/test";
 import MySnackbar from "./Components/MySnackbar";
+import Etudiants from "./pages/workspaceMember/pages/etudiants";
 function App() {
   const user = useSelector((state) => state.user.data);
 
@@ -28,9 +29,7 @@ function App() {
         <Route path="/test" element={<Test />} />
         <Route
           path="/auth"
-          element={
-            user !== null ? <Navigate replace to={"/workspace"} /> : <Auth />
-          }
+          element={user ? <Navigate replace to={"/workspace"} /> : <Auth />}
         />
         <Route path="/inscription" element={<Inscription />} />
         <Route
@@ -42,6 +41,7 @@ function App() {
           <Route index element={<Navigate replace to={"etablissement"} />} />
           {<Route path="etablissement" element={<Etablissement />} />}
           <Route path="compte" element={<Compte />} />
+          <Route path="etudiants" element={<Etudiants />} />
           <Route path="membres" element={<MembresPage />} />
           <Route path="parametre" element={<Parametre />} />
 

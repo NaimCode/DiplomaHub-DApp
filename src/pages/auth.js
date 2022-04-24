@@ -87,7 +87,7 @@ const Auth = () => {
                     label="Je suis"
                   >
                     <MenuItem value={false}>Etudiant</MenuItem>
-                    <MenuItem value={true}>Etablissement ou Member</MenuItem>
+                    <MenuItem value={true}>Membre d'un établissement</MenuItem>
                   </Select>
                 </FormControl>
               </div>

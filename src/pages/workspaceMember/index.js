@@ -21,6 +21,7 @@ export default function WorkspaceMember() {
       .get(SERVER_URL + "/membre/" + user._id)
       .then((v) => {
         console.log(v.data);
+
         dispatch(update(v.data));
       })
       .catch((v) => console.log(v.response));
