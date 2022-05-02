@@ -244,7 +244,7 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                           title="Voir le diplôme"
                           className="opacity-0 group-hover:opacity-100 text-red-500"
                         >
-                          <Delete />
+                          <DeleteTwoTone />
                         </IconButton>
                         <Button
                           variant="outlined"

@@ -55,60 +55,14 @@ const Certifies = () => {
     setisLoading(true);
 
     axios
-      .get(SERVER_URL + "/mesEtudiants/getAll/2/" + user.etablissement_id._id)
+      .get(SERVER_URL + "/mesEtudiants/getAll/3/" + user.etablissement_id._id)
       .then((v) => {
         setetudiants(v.data);
       })
       .catch((v) => console.log(v.response))
       .finally(() => setisLoading(false));
   }
-  function deleteAlletudiants() {
-    setisLoading(true);
 
-    axios
-      .delete(
-        SERVER_URL + "/mesEtudiants/deleteAll/" + user.etablissement_id._id
-      )
-      .then((v) => {
-        setetudiants([]);
-        dis(
-          notifier({
-            message: "Effacement de la liste",
-          })
-        );
-      })
-      .catch((v) =>
-        dis(
-          notifier({
-            message: "Impossible d'effacer",
-            type: "error",
-          })
-        )
-      )
-      .finally(() => setisLoading(false));
-  }
-  const deleteEtudiant = (e) => {
-    axios
-      .delete(SERVER_URL + "/mesEtudiants/delete/" + e._id)
-      .then((v) => {
-        const temp = etudiants.filter((item) => item._id !== e._id);
-        setetudiants(temp);
-        dis(
-          notifier({
-            message: "Suppression d'un étudiant",
-          })
-        );
-      })
-      .catch((v) =>
-        dis(
-          notifier({
-            message: "Impossible de supprimer",
-            type: "error",
-          })
-        )
-      )
-      .finally(() => setisLoading(false));
-  };
   return (
     <div className="py-8 px-4 bg-white border-[1px]">
       {isLoading ? (
@@ -117,30 +71,15 @@ const Certifies = () => {
         </div>
       ) : (
         <>
-          <AddEtudiant
-            open={openDialog}
-            handleClose={Close}
-            etudiants={etudiants}
-            setetudiants={setetudiants}
-          />
-          <ImportDialog
-            open={openDialogImport}
-            setOpen={setopenDialogImport}
-            mesEtudiants={etudiants}
-            setmesEtudiants={setetudiants}
-          />
           <div className="flex flex-row gap-2 justify-between">
-            <h2>Liste en attente de certification</h2>
+            <h2>Liste des certifiés</h2>
             <div className="flex flex-row gap-2 items-center"></div>
           </div>
           <Divider />
           {etudiants ? (
-            <ItemCertif
-              etudiants={etudiants.reverse()}
-              deleteEtudiant={deleteEtudiant}
-            />
+            <ItemCertif etudiants={etudiants.reverse()} />
           ) : (
-            <p className="pt-4 opacity-30">Vous n'avez aucun rôle encore</p>
+            <p className="pt-4 opacity-30">Vous n'avez aucun étudiant</p>
           )}
         </>
       )}
@@ -198,7 +137,6 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
               <StyledTableCell>Email</StyledTableCell>
               <StyledTableCell>Diplôme</StyledTableCell>
               <StyledTableCell>Date</StyledTableCell>
-              <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -238,25 +176,6 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                     </StyledTableCell>
 
                     <StyledTableCell>{getDateTime(row.date)}</StyledTableCell>
-                    <StyledTableCell align="right">
-                      <div className="flex flex-row gap-1 justify-end">
-                        <IconButton
-                          title="Voir le diplôme"
-                          className="opacity-0 group-hover:opacity-100 text-red-500"
-                        >
-                          <Delete />
-                        </IconButton>
-                        <Button
-                          variant="outlined"
-                          size="small"
-                          style={{ fontSize: 12 }}
-                          color="secondary"
-                          startIcon={<GiCrossedChains />}
-                        >
-                          certifier
-                        </Button>
-                      </div>
-                    </StyledTableCell>
                   </StyledTableRow>
                 </>
               );
