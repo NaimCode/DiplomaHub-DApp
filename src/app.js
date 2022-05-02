@@ -22,6 +22,7 @@ import MySnackbar from "./Components/MySnackbar";
 import Etudiants from "./pages/workspaceMember/pages/etudiants";
 import Certification from "./pages/workspaceMember/pages/etudiants/importation";
 import EnAttente from "./pages/workspaceMember/pages/etudiants/enAttente";
+import Certifies from "./pages/workspaceMember/pages/etudiants/certifies";
 function App() {
   const user = useSelector((state) => state.user.data);
 
@@ -49,7 +50,7 @@ function App() {
             <Route index element={<Navigate replace to={"1"} />} />
             <Route path="1" element={<Certification />} />
             <Route path="2" element={<EnAttente />} />
-            <Route path="3" element={<EnDeveloppementMini />} />
+            <Route path="3" element={<Certifies />} />
           </Route>
           <Route path="membres" element={<MembresPage />} />
           <Route path="parametre" element={<Parametre />} />

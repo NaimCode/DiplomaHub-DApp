@@ -53,7 +53,7 @@ const Certification = () => {
     setisLoading(true);
 
     axios
-      .get(SERVER_URL + "/mesEtudiants/getAll/" + user.etablissement_id._id)
+      .get(SERVER_URL + "/mesEtudiants/getAll/1/" + user.etablissement_id._id)
       .then((v) => {
         etudiants = v.data;
 
@@ -173,6 +173,7 @@ const Certification = () => {
           <Divider />
           {etudiants ? (
             <ItemCertif
+              setetudiants={setetudiants}
               etudiants={etudiants.reverse()}
               deleteEtudiant={deleteEtudiant}
             />
@@ -228,7 +229,7 @@ const getColor = (i) => {
 //    </IconButton>
 //  </div>;
 
-export function ItemCertif({ etudiants, deleteEtudiant }) {
+export function ItemCertif({ etudiants, setetudiants, deleteEtudiant }) {
   const [openAssocier, setopenAssocier] = useState(false);
   const [data, setdata] = useState(etudiants[0]);
 
@@ -254,6 +255,8 @@ export function ItemCertif({ etudiants, deleteEtudiant }) {
         open={openAssocier}
         setopenAssocier={setopenAssocier}
         data={data}
+        setMesEtudiants={setetudiants}
+        mesEtudiants={etudiants}
       />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">

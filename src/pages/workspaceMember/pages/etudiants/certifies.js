@@ -36,7 +36,7 @@ import { IPFS_NODE, SERVER_URL } from "../../../../Data/serveur";
 import { AddEtudiant } from "./addEtudiant";
 import { notifier } from "../../../../redux/notifSlice";
 import ImportDialog from "./importDialog";
-const EnAttente = () => {
+const Certifies = () => {
   const [openDialog, setopenDialog] = useState(false);
   const [openDialogImport, setopenDialogImport] = useState(false);
   const user = useSelector((state) => state.user.data);
@@ -148,7 +148,7 @@ const EnAttente = () => {
   );
 };
 
-export default EnAttente;
+export default Certifies;
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

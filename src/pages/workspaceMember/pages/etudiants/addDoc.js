@@ -1,41 +1,70 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import { Stack } from "@mui/material";
+import { CircularProgress, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { Buffer } from "buffer";
 import { useState, useEffect } from "react";
 import { create } from "ipfs-http-client";
-
+import { useDispatch } from "react-redux";
+import { notifier } from "../../../../redux/notifSlice";
+import axios from "axios";
+import { SERVER_URL } from "../../../../Data/serveur";
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddDoc({ open, setopenAssocier, data, setmembres }) {
+export default function AddDoc({
+  open,
+  setopenAssocier,
+  data,
+  setMesEtudiants,
+  mesEtudiants,
+}) {
   const [file, setfile] = useState();
   const [fileData, setfileData] = useState();
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const created = await client.add(file);
-  //       const url = `https://ipfs.infura.io/ipfs/${created.path}`;
-  //       setUrlArr((prev) => [...prev, url]);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
+  const [isLoading, setisLoading] = useState();
+  const dis = useDispatch();
+  const handleSubmit = async (file) => {
+    setisLoading(true);
+    try {
+      const created = await client.add(file);
+      axios
+        .put(SERVER_URL + "/mesEtudiants/setDiplomeHash/" + data._id, {
+          hash: created.path,
+        })
+        .then((v) => {
+          setMesEtudiants((old) => old.filter((o) => o._id !== data._id));
+          dis(
+            notifier({
+              message: "Association réussie",
+            })
+          );
+          setopenAssocier(false);
+        })
+        .catch((error) =>
+          dis(
+            notifier({
+              message: "Erreur de chargement du document",
+              type: "error",
+            })
+          )
+        );
+    } catch (error) {
+      dis(
+        notifier({ message: "Erreur de chargement du document", type: "error" })
+      );
+    }
+    setisLoading(false);
+  };
   const handleClose = () => {
     setopenAssocier(false);
   };
@@ -53,11 +82,11 @@ export default function AddDoc({ open, setopenAssocier, data, setmembres }) {
   useEffect(() => {
     setfile(null);
   }, [data]);
-  const HashingIpfs = (data) => {
+  const HashingIpfs = () => {
     const reader = new window.FileReader();
-    reader.readAsArrayBuffer(data);
+    reader.readAsArrayBuffer(fileData);
     reader.onloadend = () => {
-      console.log("Buffer data: ", Buffer(reader.result));
+      handleSubmit(Buffer(reader.result));
     };
   };
   return (
@@ -79,12 +108,16 @@ export default function AddDoc({ open, setopenAssocier, data, setmembres }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              {data.nom} {data.prenom}
+              {data?.nom} {data?.prenom}
             </Typography>
 
-            <Button disabled={!file} color="inherit" onClick={handleClose}>
-              valider
-            </Button>
+            {isLoading ? (
+              <CircularProgress color="inherit" size={30} />
+            ) : (
+              <Button disabled={!file} color="inherit" onClick={HashingIpfs}>
+                valider
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
         <Stack
