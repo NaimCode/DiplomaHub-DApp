@@ -23,6 +23,7 @@ import Etudiants from "./pages/workspaceMember/pages/etudiants";
 import Certification from "./pages/workspaceMember/pages/etudiants/importation";
 import EnAttente from "./pages/workspaceMember/pages/etudiants/enAttente";
 import Certifies from "./pages/workspaceMember/pages/etudiants/certifies";
+import CertificationPage from "./pages/workspaceMember/pages/certificationPage";
 function App() {
   const user = useSelector((state) => state.user.data);
 
@@ -46,6 +47,7 @@ function App() {
           <Route index element={<Navigate replace to={"compte"} />} />
           {<Route path="etablissement" element={<Etablissement />} />}
           <Route path="compte" element={<Compte />} />
+          <Route path="certification/:id" element={<CertificationPage />} />
           <Route path="etudiants" element={<Etudiants />}>
             <Route index element={<Navigate replace to={"1"} />} />
             <Route path="1" element={<Certification />} />

@@ -36,6 +36,7 @@ import { IPFS_NODE, SERVER_URL } from "../../../../Data/serveur";
 import { AddEtudiant } from "./addEtudiant";
 import { notifier } from "../../../../redux/notifSlice";
 import ImportDialog from "./importDialog";
+import { useNavigate } from "react-router";
 const EnAttente = () => {
   const [openDialog, setopenDialog] = useState(false);
   const [openDialogImport, setopenDialogImport] = useState(false);
@@ -171,6 +172,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function ItemCertif({ etudiants, deleteEtudiant }) {
+  const nav = useNavigate();
   const getDateTime = (t) => {
     const today = new Date(t);
     var date =
@@ -251,6 +253,9 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                           size="small"
                           style={{ fontSize: 12 }}
                           color="secondary"
+                          onClick={() =>
+                            nav("/workspace/certification/" + row._id)
+                          }
                           startIcon={<GiCrossedChains />}
                         >
                           certifier
