@@ -134,9 +134,8 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
               <StyledTableCell>Nom</StyledTableCell>
 
               <StyledTableCell>Prenom</StyledTableCell>
-              <StyledTableCell>Email</StyledTableCell>
-              <StyledTableCell>Diplôme</StyledTableCell>
-              <StyledTableCell>Date</StyledTableCell>
+              <StyledTableCell>Intitulé</StyledTableCell>
+              <StyledTableCell>Hash</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -145,7 +144,7 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                 <>
                   <StyledTableRow
                     key={i}
-                    className="group transition-all duration-300 hover:border-darker hover:text-secondaire-normal hover:border-l-[2px] hover:border-r-[2px]"
+                    className="group transition-all duration-300 "
                   >
                     <StyledTableCell component="th" scope="row" className="">
                       <p className=" font-semibold mb-1 font-corps_1 uppercase">
@@ -159,23 +158,11 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
 
                     <StyledTableCell>
                       <p className="opacity-70 underline underline-offset-2">
-                        {row.email}
+                        {row.intitule}
                       </p>
                     </StyledTableCell>
-                    <StyledTableCell>
-                      <Link to={""}>
-                        <a
-                          href={`${IPFS_NODE + row.hash}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {" "}
-                          voir diplôme
-                        </a>
-                      </Link>
-                    </StyledTableCell>
 
-                    <StyledTableCell>{getDateTime(row.date)}</StyledTableCell>
+                    <StyledTableCell>{row.diplome.hash}</StyledTableCell>
                   </StyledTableRow>
                 </>
               );

@@ -24,6 +24,8 @@ import Certification from "./pages/workspaceMember/pages/etudiants/importation";
 import EnAttente from "./pages/workspaceMember/pages/etudiants/enAttente";
 import Certifies from "./pages/workspaceMember/pages/etudiants/certifies";
 import CertificationPage from "./pages/workspaceMember/pages/certificationPage";
+import TransactionEnvoye from "./pages/workspaceMember/pages/certificationPage/transactionReussi";
+import Verification from "./pages/verification";
 function App() {
   const user = useSelector((state) => state.user.data);
 
@@ -32,12 +34,16 @@ function App() {
       <MySnackbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/test" element={<Test />} />
+        <Route
+          path="/transaction/envoye/:hash"
+          element={<TransactionEnvoye />}
+        />
         <Route
           path="/auth"
           element={user ? <Navigate replace to={"/workspace"} /> : <Auth />}
         />
         <Route path="/inscription" element={<Inscription />} />
+        <Route path="/verification" element={<Verification />} />
         <Route
           path="/workspace"
           element={
@@ -57,7 +63,7 @@ function App() {
           <Route path="membres" element={<MembresPage />} />
           <Route path="parametre" element={<Parametre />} />
 
-          <Route path="*" element={<EnDeveloppementMini />} />
+          <Route path="*" element={<Navigate to={"compte"} />} />
         </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>

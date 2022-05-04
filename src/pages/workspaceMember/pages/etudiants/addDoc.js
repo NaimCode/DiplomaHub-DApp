@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import { CircularProgress, Stack } from "@mui/material";
+import { CircularProgress, Stack, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { Buffer } from "buffer";
 import { useState, useEffect } from "react";
@@ -32,6 +32,7 @@ export default function AddDoc({
   const [file, setfile] = useState();
   const [fileData, setfileData] = useState();
   const [isLoading, setisLoading] = useState();
+  const [intitule, setintitule] = useState();
   const dis = useDispatch();
   const handleSubmit = async (file) => {
     setisLoading(true);
@@ -40,6 +41,7 @@ export default function AddDoc({
       axios
         .put(SERVER_URL + "/mesEtudiants/setDiplomeHash/" + data._id, {
           hash: created.path,
+          intitule,
         })
         .then((v) => {
           setMesEtudiants((old) => old.filter((o) => o._id !== data._id));
@@ -114,7 +116,11 @@ export default function AddDoc({
             {isLoading ? (
               <CircularProgress color="inherit" size={30} />
             ) : (
-              <Button disabled={!file} color="inherit" onClick={HashingIpfs}>
+              <Button
+                disabled={!file || !intitule}
+                color="inherit"
+                onClick={HashingIpfs}
+              >
                 valider
               </Button>
             )}
@@ -146,19 +152,28 @@ export default function AddDoc({
               />
             )}
           </Stack>
-
-          <label htmlFor="contained-button-file">
-            <input
-              accept="image/*"
-              id="contained-button-file"
-              type="file"
-              style={{ display: "none" }}
-              onChange={onFileChange}
+          <div className="flex flex-row gap-3 items-center">
+            <TextField
+              label="Intitulé"
+              variant="outlined"
+              value={intitule}
+              size="small"
+              style={{ marginRight: 10 }}
+              onChange={(v) => setintitule(v.target.value)}
             />
-            <Button variant="outlined" color="primary" component="span">
-              Selectionner le document
-            </Button>
-          </label>
+            <label htmlFor="contained-button-file">
+              <input
+                accept="image/*"
+                id="contained-button-file"
+                type="file"
+                style={{ display: "none" }}
+                onChange={onFileChange}
+              />
+              <Button variant="outlined" color="primary" component="span">
+                Selectionner le document
+              </Button>
+            </label>
+          </div>
         </Stack>
       </Dialog>
     </div>

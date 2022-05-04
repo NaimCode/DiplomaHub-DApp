@@ -198,8 +198,9 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
 
               <StyledTableCell>Prenom</StyledTableCell>
               <StyledTableCell>Email</StyledTableCell>
+              <StyledTableCell>Intitulé</StyledTableCell>
               <StyledTableCell>Diplôme</StyledTableCell>
-              <StyledTableCell>Date</StyledTableCell>
+
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -226,6 +227,7 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                         {row.email}
                       </p>
                     </StyledTableCell>
+                    <StyledTableCell>{row?.intitule}</StyledTableCell>
                     <StyledTableCell>
                       <Link to={""}>
                         <a
@@ -239,11 +241,11 @@ function ItemCertif({ etudiants, deleteEtudiant }) {
                       </Link>
                     </StyledTableCell>
 
-                    <StyledTableCell>{getDateTime(row.date)}</StyledTableCell>
                     <StyledTableCell align="right">
                       <div className="flex flex-row gap-1 justify-end">
                         <IconButton
                           title="Voir le diplôme"
+                          onClick={() => deleteEtudiant(row)}
                           className="opacity-0 group-hover:opacity-100 text-red-500"
                         >
                           <DeleteTwoTone />
