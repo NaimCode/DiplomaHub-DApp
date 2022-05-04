@@ -6,16 +6,31 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-
+import { CircularProgress, TextField } from "@mui/material";
+import { DownloadForOffline } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import fileDownload from "js-file-download";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function DialogDiplome({ open, setOpen }) {
+  const [isLoading, setisLoading] = React.useState(false);
   const handleClose = () => {
     setOpen(null);
   };
-
+  const handleClick = (url, filename) => {
+    setisLoading(true);
+    axios
+      .get(url, {
+        responseType: "blob",
+      })
+      .then((res) => {
+        fileDownload(res.data, filename);
+      })
+      .finally(() => setisLoading(false));
+  };
   return (
     <div>
       <Dialog
@@ -25,17 +40,71 @@ export default function DialogDiplome({ open, setOpen }) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
-        </DialogActions>
+        {open && (
+          <>
+            <DialogTitle className="text-xl font-light font-corps_2">
+              <h3>Détail du diplôme</h3>
+            </DialogTitle>
+            <DialogContent dividers>
+              <TextField
+                // inputProps={{ readOnly: true }}
+                label="Intitulé"
+                variant="filled"
+                fullWidth
+                disabled
+                value={open.intitule}
+              />
+              <TextField
+                label="Nom"
+                variant="filled"
+                fullWidth
+                disabled
+                style={{ marginTop: 10, marginBottom: 10 }}
+                value={open.etudiant.nom}
+              />
+
+              <TextField
+                fullWidth
+                // inputProps={{ readOnly: true }}
+                label="Prénom"
+                disabled
+                variant="filled"
+                value={open.etudiant.prenom}
+              />
+
+              <TextField
+                // inputProps={{ readOnly: true }}
+                label="Établissement"
+                type={"email"}
+                variant="filled"
+                fullWidth
+                disabled
+                style={{ marginTop: 10, marginBottom: 10 }}
+                value={open.etablissement.nom}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>retour</Button>
+              {isLoading ? (
+                <Button variant="text" color="primary">
+                  <CircularProgress size={20} />
+                </Button>
+              ) : (
+                <Button
+                  endIcon={<DownloadForOffline />}
+                  disableElevation
+                  variant="contained"
+                  onClick={() =>
+                    handleClick(open.doc, open.etudiant.nom + ".jpg")
+                  }
+                  type="submit"
+                >
+                  télécharger le document
+                </Button>
+              )}
+            </DialogActions>
+          </>
+        )}
       </Dialog>
     </div>
   );
