@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, Router } from "react-router-dom";
 import Page404 from "./pages/404";
 import Auth from "./pages/auth";
 import Home from "./pages/home";
@@ -26,8 +26,10 @@ import Certifies from "./pages/workspaceMember/pages/etudiants/certifies";
 import CertificationPage from "./pages/workspaceMember/pages/certificationPage";
 import TransactionEnvoye from "./pages/workspaceMember/pages/certificationPage/transactionReussi";
 import Verification from "./pages/verification";
+import MonEspace from "./pages/monEspace";
 function App() {
   const user = useSelector((state) => state.user.data);
+  const isMembre = useSelector((state) => state.user.isMembre);
 
   return (
     <>
@@ -40,7 +42,19 @@ function App() {
         />
         <Route
           path="/auth"
-          element={user ? <Navigate replace to={"/workspace"} /> : <Auth />}
+          element={
+            user ? (
+              <Navigate replace to={isMembre ? "/workspace" : "/monEspace"} />
+            ) : (
+              <Auth />
+            )
+          }
+        />
+        <Route
+          path="/monEspace"
+          element={
+            user === null ? <Navigate replace to={"/auth"} /> : <MonEspace />
+          }
         />
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/verification" element={<Verification />} />

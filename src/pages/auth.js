@@ -34,7 +34,9 @@ const Auth = () => {
         password,
         isMember,
       })
-      .then((v) => dispatch(connexion({ data: v.data, isMember: true })))
+      .then((v) =>
+        dispatch(connexion({ data: v.data.user, isMember: v.data.isMembre }))
+      )
       .catch((v) => seterror(v.response.data.error))
       .finally(() => setloading(false));
   };
