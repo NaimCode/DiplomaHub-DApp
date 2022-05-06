@@ -4,7 +4,7 @@ import { SERVER_URL } from "../Data/serveur";
 
 const initialState = {
   data: null,
-  isMember: true,
+  isMember: null,
 };
 
 export const userSlice = createSlice({
@@ -13,7 +13,8 @@ export const userSlice = createSlice({
   reducers: {
     connexion: (state, action) => {
       state.data = action.payload.data;
-      state.isMember = action.payload.isMembre;
+      console.log(action.payload.isMember);
+      state.isMember = action.payload.isMember;
     },
     deconnexion: (state) => {
       state.data = null;

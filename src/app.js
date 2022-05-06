@@ -29,8 +29,8 @@ import Verification from "./pages/verification";
 import MonEspace from "./pages/monEspace";
 function App() {
   const user = useSelector((state) => state.user.data);
-  const isMembre = useSelector((state) => state.user.isMembre);
-
+  const isMembre = useSelector((state) => state.user.isMember);
+  console.log(isMembre);
   return (
     <>
       <MySnackbar />
