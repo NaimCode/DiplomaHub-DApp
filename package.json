@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://NaimCode.github.io/diplomahub",
+  "homepage": "https://NaimCode.github.io/DiplomaHub-DApp",
   "private": true,
   "dependencies": {
     "@dotlottie/player-component": "^1.1.0",
