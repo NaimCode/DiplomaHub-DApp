@@ -1,0 +1,21 @@
+{
+  "short_name": "Diploma Hub",
+  "name": "La plateforme pour les certification numérique sur la blockchain",
+  "icons": [
+    {
+      "src": "logo32.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+  
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1976d2",
+  "background_color": "#ffffff"
+}

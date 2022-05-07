@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DiplomaHub-DApp/static/css/main.706aad70.css",
+    "main.js": "/DiplomaHub-DApp/static/js/main.5c63e326.js",
+    "static/media/logo.svg": "/DiplomaHub-DApp/static/media/logo.8dd1ad34ce89e565a4f0c0b8bd8cffae.svg",
+    "static/media/templateImport.xlsx": "/DiplomaHub-DApp/static/media/templateImport.d3f829cf752018d17d11.xlsx",
+    "index.html": "/DiplomaHub-DApp/index.html",
+    "main.706aad70.css.map": "/DiplomaHub-DApp/static/css/main.706aad70.css.map",
+    "main.5c63e326.js.map": "/DiplomaHub-DApp/static/js/main.5c63e326.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.706aad70.css",
+    "static/js/main.5c63e326.js"
+  ]
+}
