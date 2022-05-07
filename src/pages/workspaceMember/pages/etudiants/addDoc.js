@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { notifier } from "../../../../redux/notifSlice";
 import axios from "axios";
 import { SERVER_URL } from "../../../../Data/serveur";
-const client = create("https://ipfs.infura.io:5001/api/v0");
+export const client = create("https://ipfs.infura.io:5001/api/v0");
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

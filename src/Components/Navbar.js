@@ -4,20 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { Link } from "react-router-dom";
 import { motion, MotionConfig } from "framer-motion";
-var data = [
-  {
-    titre: "Home",
-    route: "/",
-  },
-  {
-    titre: "Contact",
-    route: "/contact",
-  },
-  {
-    titre: "Aide",
-    route: "/aide",
-  },
-];
+var data = [];
 const Navbar = ({ delay }) => {
   return (
     <MotionConfig transition={{ duration: 1, delay: delay }}>
@@ -37,15 +24,16 @@ const Navbar = ({ delay }) => {
                 </Link>
               ))}
             </div>
-
-            <Button
-              size="small"
-              variant="outlined"
-              color="primary"
-              className="border-white text-white px-5 py-2"
-            >
-              <Link to={"/auth"}> Connexion</Link>
-            </Button>
+            <Link to={"/auth"}>
+              <Button
+                size="small"
+                variant="outlined"
+                color="primary"
+                className="border-white text-white px-5 py-2"
+              >
+                Connexion
+              </Button>
+            </Link>
           </Toolbar>
         </motion.div>
       </AppBar>

@@ -59,23 +59,7 @@ const Etablissement = () => {
   }
   return (
     <div className="">
-      <div className="w-full flex flex-row justify-around items-center">
-        <div className="flex  flex-col justify-center items-center ">
-          <div className="border-2 rounded-lg w-[200px] h-[200px] flex justify-center items-center">
-            <AddAPhotoTwoTone />
-          </div>
-          <p className="max-w-[400px] text-2xl font-corps_1 font-bold">
-            {user.etablissement_id.nom}
-          </p>
-          {user.etablissement_id.abrev && (
-            <h3 className="max-w-[100px] -translate-y-3  text-secondaire-foncé">
-              ({user.etablissement_id.abrev})
-            </h3>
-          )}
-          <Button variant="outlined" color="primary" className=" ">
-            Modifier mon logo
-          </Button>
-        </div>
+      <div className="w-full flex flex-row justify-center items-center">
         <div className="w-1/2">
           <MyLottie size={""} data={dataAnimation} />
         </div>

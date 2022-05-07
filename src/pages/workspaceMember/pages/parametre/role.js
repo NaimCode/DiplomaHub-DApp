@@ -18,9 +18,14 @@ import { useSelector } from "react-redux";
 import { SERVER_URL } from "../../../../Data/serveur";
 import ItemRole from "./itemRole";
 
-export const eRole = ["Affichage", "Importation", "Certification"];
-export const rRole = ["Affichage", "Ajoût", "Suppression"];
-export const etRole = ["Affichage", "Modification"];
+export const eRole = [
+  "Affichage",
+  "Importation",
+  "Association",
+  "Certification",
+];
+export const rRole = ["Affichage", "Ajoût", "Modification", "Suppression"];
+export const etRole = ["Affichage"];
 
 const Role = () => {
   const [openDialog, setopenDialog] = useState(false);
@@ -113,7 +118,7 @@ const RoleDialog = ({
         etablissement_id,
         membre,
         etudiant,
-        etablissement: eta,
+        transaction: eta,
         role,
         intitule,
         description,
@@ -164,7 +169,7 @@ const RoleDialog = ({
           <TextField
             select
             variant="filled"
-            label="Gestion de l'établissement"
+            label="Transactions"
             fullWidth
             SelectProps={{
               multiple: true,
@@ -203,6 +208,7 @@ const RoleDialog = ({
           >
             <MenuItem value="Affichage">Affichage</MenuItem>
             <MenuItem value="Création">Création</MenuItem>
+            <MenuItem value="Modification">Création</MenuItem>
             <MenuItem value="Suppression">Suppression</MenuItem>
           </TextField>
           <TextField

@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { Person, Settings } from "@mui/icons-material";
 import { Brand } from "../../Components/Logo";
 import {
-  FaSchool as EtablissementIcon,
+  FaChartBar as EtablissementIcon,
   FaHandshake as PartenaireIcon,
 } from "react-icons/fa";
 import {
@@ -109,8 +109,13 @@ const menu = [
     head: "",
     menu: [
       {
-        titre: "Etablissement",
-        route: "etablissement",
+        titre: "Compte",
+        route: "compte",
+        icon: (style) => <Person className={style} />,
+      },
+      {
+        titre: "Statistiques",
+        route: "statistiques",
         icon: (style) => <EtablissementIcon className={style} />,
       },
       {

@@ -21,21 +21,12 @@ const ColorTabs = () => {
         textColor="secondary"
         indicatorColor="secondary"
         aria-label="secondary tabs example"
-        variant="fullWidth"
       >
         <Tab value={1} label="rôles" />
-        <Tab value={2} label="paramètre 2" />
-        <Tab value={3} label="paramètre 3" />
       </Tabs>
       <SwipeableViews index={value} onChangeIndex={handleChange}>
         <div />
         <Role />
-        <div className="flex pt-10 justify-center items-center">
-          <EnDeveloppementMini />
-        </div>
-        <div className="flex pt-10 justify-center items-center">
-          <EnDeveloppementMini />
-        </div>
       </SwipeableViews>
     </Box>
   );

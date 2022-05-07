@@ -13,7 +13,6 @@ export const userSlice = createSlice({
   reducers: {
     connexion: (state, action) => {
       state.data = action.payload.data;
-      console.log(action.payload.isMember);
       state.isMember = action.payload.isMember;
     },
     deconnexion: (state) => {

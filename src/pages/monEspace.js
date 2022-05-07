@@ -88,7 +88,9 @@ const ItemDiplome = ({ diplome, index, etudiant }) => {
           <div className="gap-3 flex flex-col w-full">
             <div className="flex flex-row gap-3">
               <TextField
-                disabled
+                InputProps={{
+                  readOnly: true,
+                }}
                 fullWidth
                 size="small"
                 label="Nom"
@@ -96,7 +98,9 @@ const ItemDiplome = ({ diplome, index, etudiant }) => {
                 value={etudiant?.nom}
               />
               <TextField
-                disabled
+                InputProps={{
+                  readOnly: true,
+                }}
                 size="small"
                 fullWidth
                 label="Prénom"
@@ -105,7 +109,9 @@ const ItemDiplome = ({ diplome, index, etudiant }) => {
               />
             </div>
             <TextField
-              disabled
+              InputProps={{
+                readOnly: true,
+              }}
               fullWidth
               size="small"
               label="Intitulé"
@@ -113,7 +119,9 @@ const ItemDiplome = ({ diplome, index, etudiant }) => {
               value={diplome?.intitule}
             />
             <TextField
-              disabled
+              InputProps={{
+                readOnly: true,
+              }}
               fullWidth
               size="small"
               label="Établissement"
@@ -121,7 +129,9 @@ const ItemDiplome = ({ diplome, index, etudiant }) => {
               value={diplome?.etablissement.nom}
             />
             <TextField
-              disabled
+              InputProps={{
+                readOnly: true,
+              }}
               fullWidth
               multiline
               size="small"

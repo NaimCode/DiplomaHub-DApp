@@ -87,7 +87,7 @@ export default function ItemRole({ roles }) {
             <TableRow>
               <StyledTableCell>Intitulé et Description</StyledTableCell>
 
-              <StyledTableCell>Etablissement</StyledTableCell>
+          
               <StyledTableCell>Membre</StyledTableCell>
               <StyledTableCell>Etudiant</StyledTableCell>
               <StyledTableCell>Rôle</StyledTableCell>
@@ -108,19 +108,6 @@ export default function ItemRole({ roles }) {
                       </p>
 
                       <p className="opacity-70">{row.description}</p>
-                    </StyledTableCell>
-
-                    <StyledTableCell>
-                      <div className="flex flex-wrap gap-2 items-center border-l-2 pl-1">
-                        {row.etablissement.map((v, i) => (
-                          <Chip
-                            label={v}
-                            key={i}
-                            size="small"
-                            className={`text-[10px] ${getColor(i)} font-light`}
-                          />
-                        ))}
-                      </div>
                     </StyledTableCell>
 
                     <StyledTableCell>
