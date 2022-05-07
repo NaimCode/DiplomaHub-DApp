@@ -105,7 +105,7 @@ const RoleDialog = ({
   const [membre, setmembre] = useState([]);
   const [etudiant, setetudiant] = useState([]);
   const [role, setrole] = useState([]);
-  const [eta, seteta] = useState([]);
+
   const [intitule, setintitule] = useState();
   const [description, setdescription] = useState();
   const [isLoading, setisLoading] = useState(false);
@@ -117,7 +117,7 @@ const RoleDialog = ({
         etablissement_id,
         membre,
         etudiant,
-        transaction: eta,
+
         role,
         intitule,
         description,

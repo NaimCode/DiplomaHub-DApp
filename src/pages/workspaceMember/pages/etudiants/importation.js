@@ -2,7 +2,6 @@
 import {
   AddTwoTone,
   DeleteTwoTone,
-  FileDownloadDoneTwoTone,
   FileUploadTwoTone,
   UploadFileTwoTone,
 } from "@mui/icons-material";
@@ -26,7 +25,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Chip } from "@mui/material";
 
 import { SERVER_URL } from "../../../../Data/serveur";
 import { AddEtudiant } from "./addEtudiant";
@@ -39,7 +37,7 @@ const Certification = () => {
 
   const user = useSelector((state) => state.user.data);
   let [etudiants, setetudiants] = useState(null);
-  let [errr, seterrr] = useState(null);
+
   const [isLoading, setisLoading] = useState(false);
 
   const dis = useDispatch();
@@ -207,19 +205,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-const getColor = (i) => {
-  const op = "50";
-  switch (i) {
-    case 0:
-      return "bg-blue-300/50";
-    case 1:
-      return "bg-accentué-normal/40";
-    case 2:
-      return "bg-pink-500/40";
-    default:
-      return "";
-  }
-};
+
 //  <div className="flex-row gap-[1px] items-center border-l-2 pl-1 hidden group-hover:flex ">
 //    <IconButton size="small">
 //      <EditTwoTone className="text-[20px]" />

@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Avatar, Drawer } from "@mui/material";
+import { AppBar, Toolbar, Avatar } from "@mui/material";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,23 +7,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  LogoutTwoTone,
-  PersonAddAlt1,
-  PersonOutlineTwoTone,
-  PersonTwoTone,
-} from "@mui/icons-material";
+import { LogoutTwoTone, PersonOutlineTwoTone } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { SERVER_URL } from "../../Data/serveur";
 import { deconnexion } from "../../redux/userSlice";
-import { avatarUrl } from "../../Data/avatar";
 
 const Appbar = () => {
   const user = useSelector((state) => state.user.data);
   const etablissement = user.etablissement_id;
-  const [openDrawer, setopenDrawer] = useState(false);
 
   return (
     <AppBar

@@ -8,24 +8,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {
-  Alert,
   Button,
   Chip,
   CircularProgress,
-  Collapse,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Divider,
-  IconButton,
-  Menu,
   MenuItem,
   TextField,
 } from "@mui/material";
 import { notifier } from "../../../../redux/notifSlice";
 import { useState } from "react";
-import { DeleteTwoTone, EditTwoTone } from "@mui/icons-material";
 import axios from "axios";
 import { SERVER_URL } from "../../../../Data/serveur";
 import { eRole, rRole } from "./role";
@@ -51,7 +45,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const getColor = (i) => {
-  const op = "50";
   switch (i) {
     case 0:
       return "bg-blue-300/50";
@@ -160,7 +153,7 @@ const UpdateRole = ({ openDialog, setopenDialog, role }) => {
   const [membre, setmembre] = useState(role.membre);
   const [etudiant, setetudiant] = useState(role.etudiant);
   const [rolep, setrolep] = useState(role.role);
-  const [eta, seteta] = useState(role.etablissement);
+
   const [intitule, setintitule] = useState(role.intitule ?? "");
   const [description, setdescription] = useState(role.description ?? "");
   const [isLoading, setisLoading] = useState(false);
@@ -173,7 +166,6 @@ const UpdateRole = ({ openDialog, setopenDialog, role }) => {
       .put(SERVER_URL + "/role/update/" + role._id, {
         membre,
         etudiant,
-        etablissement: eta,
         role: rolep,
         intitule,
         description,

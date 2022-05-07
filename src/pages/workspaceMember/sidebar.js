@@ -10,33 +10,17 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Person, Settings } from "@mui/icons-material";
 import { Brand } from "../../Components/Logo";
-import {
-  FaChartBar as EtablissementIcon,
-  FaHandshake as PartenaireIcon,
-} from "react-icons/fa";
-import {
-  BsPeopleFill as MembreIcon,
-  BsFileEarmarkTextFill as ContractIcon,
-} from "react-icons/bs";
+import { FaChartBar as EtablissementIcon } from "react-icons/fa";
+import { BsPeopleFill as MembreIcon } from "react-icons/bs";
 
 import { BiTransferAlt as TransactionIcon } from "react-icons/bi";
-import {
-  IoIosPeople as EtudiantsIcon,
-  IoIosSchool as FormationsIcon,
-} from "react-icons/io";
-import {
-  Link,
-  useNavigate,
-  useLocation,
-  useNavigationType,
-} from "react-router-dom";
+import { IoIosPeople as EtudiantsIcon } from "react-icons/io";
+import { Link, useLocation } from "react-router-dom";
 import MyLottie from "../../Components/MyLottie";
-import { Button } from "@mui/material";
 import DialogContact from "./dialogContact";
 const drawerWidth = 240;
 
 export default function Sidebar() {
-  let navigation = useNavigate();
   let location = useLocation();
   return (
     <Drawer

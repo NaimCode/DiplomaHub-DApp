@@ -26,7 +26,7 @@ const Transaction = () => {
         dis(notifier({ message: "Erreur du serveur", type: "error" }))
       )
       .finally(() => setisLoading(false));
-  }, []);
+  }, [dis, etablissement._id]);
   return (
     <div>
       {isLoading ? (
