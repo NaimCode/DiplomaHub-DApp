@@ -12,8 +12,9 @@ import { useState } from "react";
 import { CircularProgress, TextField } from "@mui/material";
 import styled from "@emotion/styled";
 import axios from "axios";
-
+import template from "./templateImport.xlsx";
 import { SERVER_URL } from "../../../../Data/serveur";
+import { Link } from "react-router-dom";
 const Input = styled("input")({
   display: "none",
 });
@@ -44,7 +45,7 @@ export default function ImportDialog({
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
       const data = XLSX.utils.sheet_to_json(ws);
-
+      console.log(data);
       const etudiants_temp = data.map((e) => ({
         nom: e["Nom"],
         prenom: e["Prénom"],
@@ -86,13 +87,6 @@ export default function ImportDialog({
     };
     reader.readAsBinaryString(file);
   };
-  const onDownload = () => {
-    const link = document.createElement("a");
-
-    link.href = "../../../../../public/files/templateImport.xlsx";
-    link.setAttribute("download", `DiplomaHub_templateImport.xlsx`);
-    link.click();
-  };
 
   return (
     <div>
@@ -122,14 +116,11 @@ export default function ImportDialog({
           >
             annuler
           </Button>
-          <Button
-            variant="outlined"
-            color="info"
-            style={{ marginRight: 10 }}
-            onClick={onDownload}
-          >
-            Telecharger une template
-          </Button>
+          <a href={template} download>
+            <Button variant="outlined" color="info" style={{ marginRight: 10 }}>
+              Télécharger une template
+            </Button>
+          </a>
           {isLoading ? (
             <CircularProgress
               size={40}

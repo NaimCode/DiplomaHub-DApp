@@ -1,4 +1,4 @@
-import { List, TextField } from "@mui/material";
+import { CircularProgress, List, TextField } from "@mui/material";
 import axios from "axios";
 import { QRCodeSVG } from "qrcode.react";
 import React, { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ const Transaction = () => {
     (state) => state.user.data.etablissement_id
   );
   useEffect(() => {
+    setisLoading(true);
     axios
       .get(SERVER_URL + "/diplome/getAll/" + etablissement._id)
       .then((res) => {
@@ -23,11 +24,16 @@ const Transaction = () => {
       })
       .catch((err) =>
         dis(notifier({ message: "Erreur du serveur", type: "error" }))
-      );
+      )
+      .finally(() => setisLoading(false));
   }, []);
   return (
     <div>
-      {diplomes.length === 0 ? (
+      {isLoading ? (
+        <div className="w-full h-[80vh] justify-center items-center flex">
+          <CircularProgress size={40} />
+        </div>
+      ) : diplomes.length === 0 ? (
         <Empty />
       ) : (
         <List>

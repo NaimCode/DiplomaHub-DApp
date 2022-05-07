@@ -56,7 +56,7 @@ function App() {
             user === null ? <Navigate replace to={"/auth"} /> : <Workspace />
           }
         >
-          <Route index element={<Navigate replace to={"statistiques"} />} />
+          <Route index element={<Navigate replace to={"compte"} />} />
           {<Route path="statistiques" element={<Etablissement />} />}
           <Route path="compte" element={<Compte />} />
           <Route path="transactions" element={<Transaction />} />

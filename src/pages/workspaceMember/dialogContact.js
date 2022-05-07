@@ -49,7 +49,7 @@ export default function DialogContact() {
   const Send = (e) => {
     e.preventDefault();
     setisLoading(true);
-    console.log(user);
+
     axios
       .post(SERVER_URL + `/auth/contact/${value}`, {
         nom: user.nom,
