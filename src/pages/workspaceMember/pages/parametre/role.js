@@ -25,7 +25,6 @@ export const eRole = [
   "Certification",
 ];
 export const rRole = ["Affichage", "Ajoût", "Modification", "Suppression"];
-export const etRole = ["Affichage"];
 
 const Role = () => {
   const [openDialog, setopenDialog] = useState(false);
@@ -169,29 +168,6 @@ const RoleDialog = ({
           <TextField
             select
             variant="filled"
-            label="Transactions"
-            fullWidth
-            SelectProps={{
-              multiple: true,
-              value: eta,
-              onChange: (v) => {
-                const temp = [];
-                v.target.value.forEach((element) => {
-                  temp.push(element);
-                });
-                seteta(temp);
-              },
-            }}
-          >
-            {etRole.map((v, i) => (
-              <MenuItem key={i} value={v}>
-                {v}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            select
-            variant="filled"
             label="Gestion des membres"
             fullWidth
             SelectProps={{
@@ -208,7 +184,7 @@ const RoleDialog = ({
           >
             <MenuItem value="Affichage">Affichage</MenuItem>
             <MenuItem value="Création">Création</MenuItem>
-            <MenuItem value="Modification">Création</MenuItem>
+            <MenuItem value="Modification">Modification</MenuItem>
             <MenuItem value="Suppression">Suppression</MenuItem>
           </TextField>
           <TextField

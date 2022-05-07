@@ -32,6 +32,7 @@ import {
 } from "react-router-dom";
 import MyLottie from "../../Components/MyLottie";
 import { Button } from "@mui/material";
+import DialogContact from "./dialogContact";
 const drawerWidth = 240;
 
 export default function Sidebar() {
@@ -92,13 +93,7 @@ export default function Sidebar() {
       </List>
       <div className="flex flex-col justify-end h-full items-center">
         <MyLottie data={contactusAnimation} />
-        <Button
-          variant="outlined"
-          color="primary"
-          className="-translate-y-[30px]"
-        >
-          Contactez-nous
-        </Button>
+        <DialogContact />
       </div>
     </Drawer>
   );

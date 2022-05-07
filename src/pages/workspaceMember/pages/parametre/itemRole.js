@@ -28,7 +28,7 @@ import { useState } from "react";
 import { DeleteTwoTone, EditTwoTone } from "@mui/icons-material";
 import axios from "axios";
 import { SERVER_URL } from "../../../../Data/serveur";
-import { eRole, etRole, rRole } from "./role";
+import { eRole, rRole } from "./role";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -87,7 +87,6 @@ export default function ItemRole({ roles }) {
             <TableRow>
               <StyledTableCell>Intitulé et Description</StyledTableCell>
 
-          
               <StyledTableCell>Membre</StyledTableCell>
               <StyledTableCell>Etudiant</StyledTableCell>
               <StyledTableCell>Rôle</StyledTableCell>
@@ -232,29 +231,6 @@ const UpdateRole = ({ openDialog, setopenDialog, role }) => {
           />
         </DialogTitle>
         <DialogContent dividers>
-          <TextField
-            select
-            variant="filled"
-            label="Gestion de l'établissement"
-            fullWidth
-            SelectProps={{
-              multiple: true,
-              value: eta,
-              onChange: (v) => {
-                const temp = [];
-                v.target.value.forEach((element) => {
-                  temp.push(element);
-                });
-                seteta(temp);
-              },
-            }}
-          >
-            {etRole.map((v, i) => (
-              <MenuItem key={i} value={v}>
-                {v}
-              </MenuItem>
-            ))}
-          </TextField>
           <TextField
             select
             variant="filled"

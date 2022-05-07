@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../../Data/serveur";
 import { update } from "../../redux/userSlice";
+import { Helmet } from "react-helmet";
 
 export default function WorkspaceMember() {
   const user = useSelector((state) => state.user.data);
@@ -25,18 +26,30 @@ export default function WorkspaceMember() {
       .catch((v) => console.log(v.response));
   }, []);
   return (
-    <Box className="flex">
-      {!nav.pathname.includes("statistiques") && <Appbar />}
-      <Sidebar />
+    <>
+      <Helmet>
+        <title>{user.etablissement_id.nom}</title>
+        <meta
+          name="description"
+          content="Bienvenue sur la plateforme de certification numérique"
+        />
+      </Helmet>
+      <Box className="flex">
+        {!nav.pathname.includes("statistiques") && <Appbar />}
+        <Sidebar />
 
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: !nav.pathname.includes("statistiques") ? 3 : 0 }}
-      >
-        {!nav.pathname.includes("statistiques") && <Toolbar />}
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: !nav.pathname.includes("statistiques") ? 3 : 0,
+          }}
+        >
+          {!nav.pathname.includes("statistiques") && <Toolbar />}
 
-        <Outlet />
+          <Outlet />
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }
