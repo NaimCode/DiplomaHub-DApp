@@ -16,15 +16,6 @@
 *** See the bottom of this document for the declaration of the reference variables
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors]][contributors-url]
-[![Forks][forks-shield]]['https://github.com/NaimCode/DiplomaHub-DApp/fork']
-[![Stargazers][stars-shield]][https://github.com/NaimCode/DiplomaHub-DApp/star]
-[![Issues][issues-shield]][https://github.com/NaimCode/DiplomaHub-DApp/issues]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -218,12 +209,3 @@ Project Link: [https://github.com/NaimCode/DiplomaHub-DApp](https://github.com/N
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
-[contributors-url]: https://github.com/NaimCode/DiplomaHub-DApp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/NaimCode/network/members
-[stars-shield]: https://img.shields.io/github/stars/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
-[stars-url]: https://github.com/NaimCode/DiplomaHub-DApp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
-[issues-url]: https://github.com/NaimCode/DiplomaHub-DApp/issues
-[license-shield]: https://img.shields.io/github/license/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
