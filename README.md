@@ -18,7 +18,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][https://github.com/NaimCode/DiplomaHub-DApp/fork]
+[![Forks][forks-shield]]['https://github.com/NaimCode/DiplomaHub-DApp/fork']
 [![Stargazers][stars-shield]][https://github.com/NaimCode/DiplomaHub-DApp/star]
 [![Issues][issues-shield]][https://github.com/NaimCode/DiplomaHub-DApp/issues]
 [![MIT License][license-shield]][license-url]
