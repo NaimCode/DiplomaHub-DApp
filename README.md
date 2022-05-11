@@ -18,7 +18,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors]][contributors-url]
-![Forks]['https://github.com/NaimCode/DiplomaHub-DApp/fork']
+[![Forks][forks-shield]]['https://github.com/NaimCode/DiplomaHub-DApp/fork']
 [![Stargazers][stars-shield]][https://github.com/NaimCode/DiplomaHub-DApp/star]
 [![Issues][issues-shield]][https://github.com/NaimCode/DiplomaHub-DApp/issues]
 [![MIT License][license-shield]][license-url]
@@ -82,12 +82,12 @@
 ## About The Project
 
 ![DiplomaHub](images/homepage.png "Homepage")
-Homepage
-![DiplomaHub](images/homepage.png "Homepage")
-Homepage
-![DiplomaHub](images/homepage.png "Homepage")
-Homepage
-![DiplomaHub](images/homepage.png "Homepage")
+               Homepage
+![DiplomaHub](images/confirm.png "Homepage")
+               Confirm transaction
+![DiplomaHub](images/success.png "Homepage")
+               Transaction done
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -188,7 +188,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -199,7 +199,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/NaimCode/DiplomaHub-DApp](https://github.com/NaimCode/DiplomaHub-DApp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -218,16 +218,12 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[contributors-shield]: https://img.shields.io/github/contributors/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
+[contributors-url]: https://github.com/NaimCode/DiplomaHub-DApp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
+[forks-url]: https://github.com/github_username/NaimCode/network/members
+[stars-shield]: https://img.shields.io/github/stars/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
+[stars-url]: https://github.com/NaimCode/DiplomaHub-DApp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
+[issues-url]: https://github.com/NaimCode/DiplomaHub-DApp/issues
+[license-shield]: https://img.shields.io/github/license/NaimCode/DiplomaHub-DApp.svg?style=for-the-badge
