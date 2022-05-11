@@ -29,22 +29,22 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/NaimCode/Diploma-DApp">
-    <img src="images/homepage.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/NaimCode/DiplomaHub-DApp">
+    <img src="images/homepage.png" alt="Logo" width="80vw" height="80vh">
   </a>
 
 <h3 align="center">DiplomaHub</h3>
 
   <p align="center">
     <br />
-    <a href="https://github.com/NaimCode/Diploma-DApp"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/NaimCode/DiplomaHub-DApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/NaimCode/Diploma-DApp">View Demo</a>
+    <a href="https://github.com/NaimCode/DiplomaHub-DApp">View Demo</a>
     ·
-    <a href="https://github.com/NaimCode/Diploma-DApp/issues">Report Bug</a>
+    <a href="https://github.com/NaimCode/DiplomaHub-DApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/NaimCode/Diploma-DApp/issues">Request Feature</a>
+    <a href="https://github.com/NaimCode/DiplomaHub-DApp/issues">Request Feature</a>
   </p>
 </div>
 
