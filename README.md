@@ -17,6 +17,14 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+[![Contributors]][contributors-url]
+![Forks]['https://github.com/NaimCode/DiplomaHub-DApp/fork']
+[![Stargazers][stars-shield]][https://github.com/NaimCode/DiplomaHub-DApp/star]
+[![Issues][issues-shield]][https://github.com/NaimCode/DiplomaHub-DApp/issues]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+
 
 <!-- PROJECT LOGO -->
 <br />
@@ -73,9 +81,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![DiplomaHub](images/homepage.png "Homepage")
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+![DiplomaHub](images/homepage.png "Homepage")
+Homepage
+![DiplomaHub](images/homepage.png "Homepage")
+Homepage
+![DiplomaHub](images/homepage.png "Homepage")
+Homepage
+![DiplomaHub](images/homepage.png "Homepage")
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -83,14 +95,14 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Node.js](https://nodejs.org/)
+* [Express](https://expressjs.com/fr/)
+* [MongoDB](https://www.mongodb.com/)
+* [Truffle](https://trufflesuite.com/)
+* [Ganache](https://trufflesuite.com/ganache/)
+* [TailwindCSS](https://tailwindcss.com/)
+* [Material-UI](https://mui.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
