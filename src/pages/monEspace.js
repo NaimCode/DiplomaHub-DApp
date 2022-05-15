@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Divider,
   List,
@@ -29,13 +30,7 @@ const MonEspace = () => {
       .get(SERVER_URL + "/diplome/get/all/" + user._id)
       .then((res) => {
         console.log(res.data);
-        setdiplomes((old) => [
-          ...res.data,
-          ...res.data,
-          ...res.data,
-          ...res.data,
-          ...res.data,
-        ]);
+        setdiplomes((old) => [...res.data]);
       })
       .catch((err) =>
         dis(notifier({ message: "Erreur du serveur", type: "error" }))
